@@ -11,6 +11,7 @@
   },
   "name": "server",
   "version": "1.0.0",
+  "type": "module",
   "main": "app.js",
   "directories": {
     "lib": "lib"
@@ -22,5 +23,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {},
   "description": ""
 }
