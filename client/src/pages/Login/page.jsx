@@ -12,7 +12,7 @@ export default function Loginpage() {
 
 	useEffect(() => {
 		try {
-			axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/requestAllDay`).then(response => {
+			axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
 				setMovie(response.data)
 			})
 		} catch (error) {
@@ -23,7 +23,7 @@ export default function Loginpage() {
 	const handleSubmitLogin = (e) => {
 		e.preventDefault()
 		try {
-			axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, { email: email, pass: pass }).then(response => {
+			axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email: email, pass: pass }).then(response => {
 				const { token } = response.data
 				localStorage.setItem('jwtToken', token)
 				toast('Login Successfull!', {

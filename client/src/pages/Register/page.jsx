@@ -14,7 +14,7 @@ export default function RegisterPage() {
 
     useEffect(() => {
         try {
-            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/requestAllDay`).then(response => {
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
                 setMovie(response.data)
             })
         } catch (error) {
@@ -25,7 +25,7 @@ export default function RegisterPage() {
     const handleSubmitRegister = (e) => {
         e.preventDefault()
         try {
-            axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register`, { name: name, email: email, pass: pass }).then(response => {
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, { name: name, email: email, pass: pass }).then(response => {
                 if (response.data) {
                     toast('Register Successfull!', {
                         duration: 1000,

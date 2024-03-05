@@ -3,7 +3,8 @@ const router = require('./lib/router')
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config()
-const { MONGODB_URI, PORT } = process.env
+const { MONGODB_URI } = process.env
+const PORT = process.env.PORT || 4001
 
 const app = express()
 
@@ -28,7 +29,7 @@ app.use(
     })
 );
 
-app.use('/api', router)
+app.use('/', router)
 
 // /* //Serve static assets if in production
 // if (process.env.NODE_ENV = "production") {
