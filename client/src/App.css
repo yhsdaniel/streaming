@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #1a1a1a;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #fff !important;
+}
+
+.slick-prev, .slick-next {
+    color: #fff !important;
+}
+
+.animate-title {
+    animation: smallsize 1.5s cubic-bezier(.165,.84,.44,1) 5s forwards 1;
+}
+
+.animate-overview {
+    animation: hiding 1.5s cubic-bezier(.165,.84,.44,1) 5s forwards 1;
+}
+
+.animate-loading {
+    animation: loading 2s cubic-bezier(.165,.84,.44,1);
+}
+
+@keyframes smallsize {
+    0% {
+        transform-origin: top left;
+        transform: scale(1) translate3d(0px, 0px, 0px);
+        transition-duration: 1300ms;
+        transition-delay: 5000ms;
+    }
+    100% {
+        transform-origin: left bottom;
+        transform: scale(0.6) translate3d(0px, 84px, 0px);
+        transition-duration: 1300ms;
+        transition-delay: 5000ms;
+    }
+}
+
+@keyframes hiding {
+    0% {
+        opacity: 1;
+        transform-origin: top left;
+        transform: scale(1) translate3d(0px, 0px, 0px);
+        transition-duration: 1300ms;
+        transition-delay: 5000ms;
+    }
+    100% {
+        opacity: 0;
+        transform-origin: left bottom;
+        transform: scale(0.6) translate3d(0px, 84px, 0px);
+        transition-duration: 1300ms;
+        transition-delay: 5000ms;
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0;
+        background: #000;
+    }
+    100% {
+        opacity: 0.7;
+        background: transparent;
+    }
+}
