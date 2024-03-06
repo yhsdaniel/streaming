@@ -20,8 +20,10 @@ export default function TVshowPage() {
             >
                 <Navbar />
                 <Main />
-                <TrendingTVSeries title={title.trendingTVSeries} />
-                <TopRatedTVSeries title={title.topratedSeries} />
+                <div className="bg-black relative">
+                    <TrendingTVSeries title={title.trendingTVSeries} />
+                    <TopRatedTVSeries title={title.topratedSeries} />
+                </div>
             </motion.div>
         </AnimatePresence>
     )

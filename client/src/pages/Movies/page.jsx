@@ -20,7 +20,9 @@ export default function MoviePage() {
             >
                 <Navbar />
                 <Main />
-                <PopularMovies title={title.popularMovies} />
+                <div className="bg-black relative">
+                    <PopularMovies title={title.popularMovies} />
+                </div>
             </motion.div>
         </AnimatePresence>
     )

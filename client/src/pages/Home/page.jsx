@@ -21,9 +21,11 @@ export default function Homepage() {
       >
         <Navbar />
         <Main />
-        <PopularMovies title={title.popularMovies} />
-        <TrendingTVSeries title={title.trendingTVSeries} />
-        <TopRatedTVSeries title={title.topratedSeries} />
+        <div className="bg-black relative">
+          <PopularMovies title={title.popularMovies} />
+          <TrendingTVSeries title={title.trendingTVSeries} />
+          <TopRatedTVSeries title={title.topratedSeries} />
+        </div>
       </motion.div>
     </AnimatePresence>
   )

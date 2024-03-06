@@ -9,7 +9,7 @@ export default function Navbar() {
         localStorage.removeItem('jwtToken')
     }
     return (
-        <header className='flex items-center justify-between py-4 px-11 z-[20] absolute w-full bg-gradient-to-b from-gray-900 to-transparent'>
+        <header className='flex items-center justify-between py-4 px-11 z-[20] fixed w-full bg-gradient-to-b from-gray-900 to-transparent'>
             <Link to='/' className='text-orange-500 text-4xl font-bold cursor-pointer w-2/12'>NETEX</Link>
             <div className="flex justify-between items-center w-3/12">
                 <Link to='/' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out">Home</Link>

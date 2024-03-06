@@ -6,6 +6,7 @@ import Modal from "../../components/Modal"
 export default function Main() {
     const [movie, setMovie] = useState('')
     const movies = movie[Math.floor(Math.random() * movie.length)]
+    const urlImage = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`
     
     useEffect(() => {
         axios.get(requests.requests.requestPopularMovies).then((response => {
@@ -16,10 +17,10 @@ export default function Main() {
     if (!movies) return null
 
     return (
-        <div className="w-full h-screen relative flex justify-start items-center">
+        <div style={{backgroundImage: `url(${urlImage})`}} className="w-full h-screen relative flex justify-start items-center bg-center bg-cover bg-fixed">
             <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
-            <img src={`https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`} alt={movies?.title} className="w-full h-full object-cover" loading="lazy" />
-            <div className="absolute py-4 px-11 w-5/12 max-[600px]:w-full flex flex-col">
+            {/* <img src={`${urlImage}`} alt={movies?.title} className="w-full h-full object-cover" loading="lazy" /> */}
+            <div className="fixed py-4 px-11 w-5/12 max-[600px]:w-full flex flex-col">
                 <div className="text-white w-full">
                     {/* <h1 className="text-6xl my-6 animate-title max-[600px]:text-3xl">{movies?.original_title}</h1>
                     <p className="line-clamp-2 animate-overview">{movies?.overview}</p> */}
