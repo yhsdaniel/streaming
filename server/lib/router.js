@@ -1,11 +1,13 @@
-const express = require('express')
-const axios = require('axios')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
-const config = require('config')
-const User = require('./User')
+import express from 'express'
+import axios from 'axios'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
+import config from 'config'
+import User from './User.js'
+import dotenv from 'dotenv'
+
 const router = express.Router()
-require('dotenv').config()
+dotenv.config()
 
 const key = 'b5dc2ae423fdfd220737f5f979a6c7c1'
 
@@ -116,4 +118,4 @@ router.post('/login', (req, res) => {
     })
 })
 
-module.exports = router
+export default router

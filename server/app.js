@@ -1,9 +1,13 @@
-const express = require('express')
-const router = require('./lib/router')
-const cors = require('cors')
-const http = require('http')
-const mongoose = require('mongoose')
-require('dotenv').config()
+import express, { urlencoded, json } from 'express'
+import router from './lib/router.js'
+import cors from 'cors'
+import { createServer } from 'http'
+import cookieparser from 'cookie-parser'
+import { connect } from 'mongoose'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 const {
   MONGODB_URI
 } = process.env
@@ -11,11 +15,11 @@ const port = process.env.PORT || 5000
 
 const app = express()
 
-app.use(express.urlencoded({
+app.use(urlencoded({
   extended: false
 }))
-app.use(express.json())
-app.use(cookieParser());
+app.use(json())
+app.use(cookieparser());
 app.use(cors())
 
 // app.use(
@@ -26,9 +30,9 @@ app.use(cors())
 //   })
 // );
 
-const server = http.createServer(app);
+const server = createServer(app);
 
-app.use('/api', router)
+app.use('/', router)
 
 // /* //Serve static assets if in production
 // if (process.env.NODE_ENV = "production") {
@@ -39,7 +43,7 @@ app.use('/api', router)
 //     });
 // }
 
-mongoose.connect(MONGODB_URI, {
+connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -53,3 +57,7 @@ mongoose.connect(MONGODB_URI, {
     console.error(err)
     process.exit(1)
   });
+
+// app.listen(port, () => {
+//   console.log(`Server is listening on port ${port}`)
+// })
