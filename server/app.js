@@ -21,9 +21,7 @@ app.use(urlencoded({
 app.use(json())
 app.use(cookieparser());
 app.use(cors({
-  origin: ['https://streaming-front-three.vercel.app'],
-  methods: ['POST', 'GET'],
-  credentials: true
+  origin: ['https://streaming-front-three.vercel.app', 'http://localhost:5173']
 }))
 
 // app.use(
