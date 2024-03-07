@@ -11,6 +11,14 @@ dotenv.config()
 
 const key = 'b5dc2ae423fdfd220737f5f979a6c7c1'
 
+router.get('/', async (_req, res) => {
+    try {
+        res.status(200).json('Hello World')
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 router.get('/requestPopularMovies', async (_req, res) => {
     try {
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`).then(response => {
