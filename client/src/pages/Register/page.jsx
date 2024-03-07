@@ -14,7 +14,7 @@ export default function RegisterPage() {
 
     useEffect(() => {
         try {
-            axios.get(`https://streaming-server-five.vercel.app/requestAllDay`).then(response => {
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
                 setMovie(response.data)
             })
         } catch (error) {

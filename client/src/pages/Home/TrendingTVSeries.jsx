@@ -7,8 +7,7 @@ export default function TrendingTVSeries(props) {
         <div className='-translate-y-24'>
             <div className='py-4 px-11'>
                 <h1 className='text-2xl my-4'>{props.title}</h1>
-				{/* <Sliding requestsAPI={`${import.meta.env.VITE_BACKEND_URL}/requestTrendingTVSeries`}/> */}
-				<Sliding requestsAPI={`https://streaming-server-five.vercel.app/requestTrendingTVSeries`}/>
+				<Sliding requestsAPI={`${import.meta.env.VITE_BACKEND_URL}/requestTrendingTVSeries`}/>
             </div>
         </div>
     )
