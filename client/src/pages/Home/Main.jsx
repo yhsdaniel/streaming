@@ -17,14 +17,13 @@ export default function Main() {
     if (!movies) return null
 
     return (
-        <div style={{backgroundImage: `url(${urlImage})`}} className="w-full h-screen relative flex justify-start items-center bg-center bg-cover bg-fixed">
+        <div style={{backgroundImage: `url(${urlImage})`}} className="w-full h-screen max-[1024px]:h-[30rem] relative flex justify-start items-center bg-center bg-cover">
             <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
-            {/* <img src={`${urlImage}`} alt={movies?.title} className="w-full h-full object-cover" loading="lazy" /> */}
-            <div className="fixed py-4 px-11 w-5/12 max-[600px]:w-full flex flex-col">
+            <div className="absolute py-4 px-11 max-[1024px]:px-4 w-5/12 max-[1024px]:w-full flex flex-col">
                 <div className="text-white w-full">
                     {/* <h1 className="text-6xl my-6 animate-title max-[600px]:text-3xl">{movies?.original_title}</h1>
                     <p className="line-clamp-2 animate-overview">{movies?.overview}</p> */}
-                    <h1 className="text-6xl my-6 max-[600px]:text-3xl">{movies?.original_title}</h1>
+                    <h1 className="text-6xl my-6 max-[1024px]:text-3xl">{movies?.original_title}</h1>
                     <p className="line-clamp-2">{movies?.overview}</p>
                 </div>
                 <div className="flex mt-8">

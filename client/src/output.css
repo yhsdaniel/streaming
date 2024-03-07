@@ -899,10 +899,6 @@ video {
   background-size: cover;
 }
 
-.bg-fixed {
-  background-attachment: fixed;
-}
-
 .bg-center {
   background-position: center;
 }
@@ -1258,10 +1254,66 @@ body {
   }
 }
 
+@media (max-width: 1024px) {
+  .max-\[1024px\]\:h-\[30rem\] {
+    height: 30rem;
+  }
+
+  .max-\[1024px\]\:w-full {
+    width: 100%;
+  }
+
+  .max-\[1024px\]\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .max-\[1024px\]\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .max-\[1024px\]\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .max-\[1024px\]\:px-1 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .max-\[1024px\]\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .max-\[1024px\]\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .max-\[1024px\]\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .max-\[1024px\]\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
 @media (max-width: 900px) {
   .max-\[900px\]\:mx-\[10\%\] {
     margin-left: 10%;
     margin-right: 10%;
+  }
+}
+
+@media (max-width: 800px) {
+  .max-\[800px\]\:h-\[30rem\] {
+    height: 30rem;
   }
 }
 
