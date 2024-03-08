@@ -10,8 +10,8 @@ function App() {
 
 	return (
 		<Routes>
-			<Route path='/' element={<Homepage />}/>
-			<Route path='login' element={<Loginpage />}/>
+			<Route path='/login' element={<Loginpage />}/>
+			<Route path='home' element={<Homepage />}/>
 			<Route path='register' element={<RegisterPage />}/>
 			<Route path='movies' element={<MoviePage />}/>
 			<Route path='tvshows' element={<TVshowPage />}/>

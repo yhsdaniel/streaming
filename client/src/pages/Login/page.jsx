@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Loginpage() {
 	const [movie, setMovie] = useState([])
@@ -26,11 +27,15 @@ export default function Loginpage() {
 			axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email: email, pass: pass }).then(response => {
 				const { token } = response.data
 				localStorage.setItem('jwtToken', token)
-				toast('Login Successfull!', {
+				toast.success('Login Successfull!', {
 					duration: 1000,
-					position: 'top-center'
+					position: 'top-center',
+					icon: '👏',
+					style: {
+						color: 'green'
+					}
 				})
-				navigate('/')
+				navigate('/home')
 			})
 		} catch (error) {
 			console.error('Error', error)
@@ -48,18 +53,23 @@ export default function Loginpage() {
 				transition={{ duration: 2 }}
 			>
 				<div className="h-screen w-full">
-					<header className='flex items-center justify-between py-4 px-11 z-[20] absolute w-full bg-gradient-to-b from-gray-900 to-transparent'>
-						<Link to='/' className='text-orange-500 text-4xl font-bold cursor-pointer w-2/12'>NETEX</Link>
+					<header className='flex items-center justify-between py-4 px-11  max-[1024px]:px-4 z-[20] absolute w-full bg-gradient-to-b from-gray-900 to-transparent'>
+						<h1 className='text-orange-500 text-4xl cursor-default font-bold w-2/12'>NETEX</h1>
 					</header>
 					<div className="absolute -z-10 blur-md bg-black/25">
 						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="mix-blend-darken" />
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
-						<section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
+						<section className="bg-white/90 my-auto mx-[25%] max-[1024px]:mx-[15%] max-[460px]:mx-[5%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
 							<div className="w-6/12 max-[700px]:w-3/4">
-								<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`} alt={movie[0]?.title} className="w-full h-full object-cover rounded-l-lg rounded-bl-lg" loading="lazy" />
+								<LazyLoadImage
+									src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
+									alt={movie[0]?.title}
+									className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg max-[700px]:hidden'
+									effect="blur"
+								/>
 							</div>
-							<div className="w-6/12 px-8 h-full max-[700px]:w-3/4">
+							<div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-6">
 								<form onSubmit={handleSubmitLogin} className="flex justify-start items-start flex-col">
 									<div className="my-4 text-3xl font-bold text-gray-700"><h1>Sign In</h1></div>
 									<input

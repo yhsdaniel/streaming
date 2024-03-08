@@ -90,12 +90,6 @@ export default function Sliding(props) {
 							src={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
 							effect="blur"
 						/>
-						{/* <img
-							src={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
-							alt='Image Alt'
-							className='w-full h-full'
-							loading='lazy'
-						/> */}
 					</div>
 				))
 			)}

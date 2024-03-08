@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="py-4 bg-[#1a1a1a] relative">
-        <div className="grid grid-cols-4 gap-4 mb-3 mx-[20%] my-auto">
+        <div className="grid grid-cols-4 max-[450px]:grid-cols-2 gap-4 max-[450px]:gap-2 mb-3 mx-[20%] max-[900px]:mx-[10%] max-[450px]:mx-[5%] my-auto max-[450px]:py-4">
             <div className="text-sm text-gray-300/50 flex flex-col">
                 <a href="" className="my-2 hover:text-gray-300/65 duration-150 ease-in-out cursor-pointer">Audio Description</a>
                 <a  href="" className="my-2 hover:text-gray-300/65 duration-150 ease-in-out cursor-pointer">Investor Relations</a>
@@ -22,7 +22,6 @@ export default function Footer() {
                 <a  href="" className="my-2 hover:text-gray-300/65 duration-150 ease-in-out cursor-pointer">Privacy</a>
                 <a  href="" className="my-2 hover:text-gray-300/65 duration-150 ease-in-out cursor-pointer">Contact Us</a>
             </div>
-            <span className="text-xs text-gray-300/50">&copy; 2023-2024 Netex, Inc.</span>
         </div>
     </footer>
   )
