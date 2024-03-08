@@ -10,6 +10,7 @@ function App() {
 
 	return (
 		<Routes>
+			<Route path='/' exact element={<Loginpage />}/>
 			<Route path='/login' element={<Loginpage />}/>
 			<Route path='home' element={<Homepage />}/>
 			<Route path='register' element={<RegisterPage />}/>
