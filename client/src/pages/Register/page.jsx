@@ -64,15 +64,15 @@ export default function RegisterPage() {
                     </div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
                         <section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
-                            <div className="w-6/12 max-[700px]:w-3/4">
+                            <div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
                                 <LazyLoadImage
 									src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
 									alt={movie[0]?.title}
-									className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg max-[700px]:hidden'
+									className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
 									effect="blur"
 								/>
                             </div>
-                            <div className="w-6/12 px-8 h-full max-[700px]:w-3/4">
+                            <div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-8">
                                 <form className="flex justify-start items-start flex-col" onSubmit={handleSubmitRegister}>
                                     <div className="my-4 text-3xl font-bold text-gray-700"><h1>Sign Up</h1></div>
                                     <input

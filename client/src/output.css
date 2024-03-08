@@ -1517,6 +1517,16 @@ body {
 }
 
 @media (max-width: 700px) {
+  .max-\[700px\]\:mx-\[5\%\] {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .max-\[700px\]\:mx-\[10\%\] {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
   .max-\[700px\]\:block {
     display: block;
   }
@@ -1555,6 +1565,11 @@ body {
   .max-\[700px\]\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  .max-\[700px\]\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 
