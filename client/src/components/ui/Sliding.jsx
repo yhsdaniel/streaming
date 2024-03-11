@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Slider from 'react-slick'
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Modal from '../Modal';
 
 export default function Sliding(props) {
 	const [movie, setMovie] = useState([])
@@ -81,18 +81,20 @@ export default function Sliding(props) {
 
 	return (
 		<Slider {...settings}>
-			{movie && (
-				movie.map(val => (
-					<div key={val.id} className='cursor-pointer relative px-2 h-1/2'>
-						<LazyLoadImage
-							className='w-full h-full'
-							alt='Image Alt'
-							src={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
-							effect="blur"
-						/>
-					</div>
-				))
-			)}
+			{movie.map(val => (
+				<div key={val.id} className='cursor-pointer relative px-2 h-1/2'>
+					<Modal 
+						labelModal={false}
+                        id={val?.id} 
+                        title={val?.title} 
+                        overview={val?.overview} 
+                        date={val?.release_date}
+                        image={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
+                        runtime={val?.runtime}
+						typesFilm={props.types}
+                    />
+				</div>
+			))}
 		</Slider>
 	)
 }

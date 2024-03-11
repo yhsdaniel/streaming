@@ -33,7 +33,8 @@ export default function Main() {
                         </svg>
                         Watch Now
                     </button>
-                    <Modal 
+                    <Modal
+                        labelModal={true}
                         id={movies?.id} 
                         title={movies?.title} 
                         overview={movies?.overview} 
