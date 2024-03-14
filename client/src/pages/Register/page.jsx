@@ -10,7 +10,7 @@ export default function RegisterPage() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
-    const [pass2, setPass2] = useState('')
+    // const [pass2, setPass2] = useState('')
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -99,14 +99,14 @@ export default function RegisterPage() {
                                         // onChange={handleChange}
                                         onChange={(e) => setPass(e.target.value)}
                                     />
-                                    <input
+                                    {/* <input
                                         type="password"
                                         placeholder="Re-enter Password"
                                         value={pass2}
                                         className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
                                         // onChange={handleChange}
                                         onChange={(e) => setPass2(e.target.value)}
-                                    />
+                                    /> */}
                                     <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign In</button>
                                 </form>
                                 <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-gray-700 hover:text-gray-500">Sign In</Link></div>

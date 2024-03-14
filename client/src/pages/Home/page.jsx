@@ -1,8 +1,8 @@
 import Navbar from "../../components/Navbar";
 import Main from "./Main";
-import PopularMovies from "./PopularMovies";
-import TrendingTVSeries from "./TrendingTVSeries";
-import TopRatedTVSeries from "./TopRatedTVSeries";
+import PopularMovies from "../Movies/PopularMovies";
+import TrendingTVSeries from "../TVshow/TrendingTVSeries";
+import TopRatedTVSeries from "../TVshow/TopRatedTVSeries";
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Homepage() {

@@ -1,13 +1,15 @@
 import Navbar from "../../components/Navbar";
 import Main from "../Home/Main";
-import TopRatedTVSeries from "../Home/TopRatedTVSeries";
-import TrendingTVSeries from "../Home/TrendingTVSeries";
+import TopRatedTVSeries from "./TopRatedTVSeries";
+import TrendingTVSeries from "./TrendingTVSeries";
+import PopularTVSeries from "./PopularTVSeries";
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function TVshowPage() {
     const title = {
         trendingTVSeries: 'Top Trending TV Series',
-        topratedSeries: 'Top Rated TV Series',
+        topratedTVSeries: 'Top Rated TV Series',
+        popularTVSeries: 'Popular TV Series',
     }
 
     return (
@@ -21,8 +23,9 @@ export default function TVshowPage() {
                 <Navbar />
                 <Main />
                 <div className="bg-black relative">
+                    <PopularTVSeries title={title.popularTVSeries} />
                     <TrendingTVSeries title={title.trendingTVSeries} />
-                    <TopRatedTVSeries title={title.topratedSeries} />
+                    <TopRatedTVSeries title={title.topratedTVSeries} />
                 </div>
             </motion.div>
         </AnimatePresence>

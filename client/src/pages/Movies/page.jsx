@@ -1,13 +1,15 @@
 import Navbar from "../../components/Navbar";
 import Main from "../Home/Main";
-import PopularMovies from "../Home/PopularMovies";
+import PopularMovies from "./PopularMovies";
+import TopRatedMovies from "./TopRatedMovies";
+import UpcomingMovies from "./UpcomingMovies";
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MoviePage() {
     const title = {
-        trendingTVSeries: 'Top Trending TV Series',
-        topratedSeries: 'Top Rated TV Series',
         popularMovies: 'Top Popular Movies',
+        topRatedMovies: 'Top Rated Movies',
+        UpcomingMovies: 'Upcoming Movies'
     }
 
     return (
@@ -22,6 +24,8 @@ export default function MoviePage() {
                 <Main />
                 <div className="bg-black relative">
                     <PopularMovies title={title.popularMovies} />
+                    <TopRatedMovies title={title.topRatedMovies} />
+                    <UpcomingMovies title={title.UpcomingMovies} />
                 </div>
             </motion.div>
         </AnimatePresence>
