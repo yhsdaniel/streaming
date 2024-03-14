@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import Slider from 'react-slick'
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Modal from '../Modal';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, HashNavigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export default function Sliding(props) {
 	const [movie, setMovie] = useState([])
@@ -21,68 +23,43 @@ export default function Sliding(props) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
-	var settings = {
-		dots: false,
-		infinite: true,
-		speed: 800,
-		slidesToShow: 8,
-		slidesToScroll: 2,
-		swipeToSlide: true,
-		initialSlide: 0,
-		lazyLoad: true,
-		responsive: [
-			{
-				breakpoint: 1440,
-				settings: {
-					slidesToShow: 6,
-					slidesToScroll: 2,
-					infinite: true,
-					dots: false
-				}
-			},
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 5,
-					slidesToScroll: 2,
-					infinite: true,
-					dots: false
-				}
-			},
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 1,
-					infinite: true,
-					dots: false
-				}
-			},
-			{
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
-					infinite: true,
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-					infinite: true,
-				}
-			}
-		]
-	};
-
 	if (!movie) return null
 
 	return (
-		<Slider {...settings}>
-			{movie.map(val => (
-				<div key={val.id} className='cursor-pointer relative px-2 h-1/2'>
+		<Swiper
+			slidesPerView={8}
+			spaceBetween={10}
+			navigation={true}
+			hashNavigation={{
+				watchState: true
+			}}
+			breakpoints={{
+				1440: {
+					slidesPerView: 8,
+					spaceBetween: 10
+				},
+				1200: {
+					slidesPerView: 6,
+					spaceBetween: 10
+				},
+				1024: {
+					slidesPerView: 5,
+					spaceBetween: 10
+				},
+				600: {
+					slidesPerView: 4,
+					spaceBetween: 10
+				},
+				480: {
+					slidesPerView: 3,
+					spaceBetween: 10
+				},
+			}}
+			modules={[Navigation, HashNavigation]}
+			className='mySwiper'
+		>	
+			{movie?.map(val => (
+				<SwiperSlide key={val.id} data-hash={val.id} className='cursor-pointer'>
 					<Modal 
 						labelModal={false}
                         id={val?.id} 
@@ -93,8 +70,8 @@ export default function Sliding(props) {
                         runtime={val?.runtime}
 						typesFilm={props.types}
                     />
-				</div>
+				</SwiperSlide>
 			))}
-		</Slider>
+		</Swiper>
 	)
 }

@@ -678,6 +678,10 @@ video {
   display: grid;
 }
 
+.aspect-\[3\/5\] {
+  aspect-ratio: 3/5;
+}
+
 .h-1\/2 {
   height: 50%;
 }
@@ -708,10 +712,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[30px\] {
-  height: 30px;
 }
 
 .w-2\/12 {
@@ -756,10 +756,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[30px\] {
-  width: 30px;
 }
 
 .flex-1 {
@@ -1266,24 +1262,86 @@ body {
   font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
 }
 
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   color: #fff !important;
 }
 
-.slick-prev, .slick-next {
+.slick-prev,
+.slick-next {
   color: #fff !important;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.swiper-button-next, 
+.swiper-rtl .swiper-button-prev {
+  opacity: 0;
+  height: 100% !important;
+  top: var(--swiper-navigation-top-offset, 8%) !important;
+  right: 0 !important;
+  color: #fff !important;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, .6), transparent);
+}
+
+.swiper-button-prev, 
+.swiper-rtl .swiper-button-next {
+  opacity: 0;
+  height: 100% !important;
+  top: var(--swiper-navigation-top-offset, 8%) !important;
+  left: 0 !important;
+  color: #fff !important;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .6), transparent);
+}
+
+.swiper-button-next:hover, 
+.swiper-rtl .swiper-button-prev:hover,
+.swiper-button-prev:hover, 
+.swiper-rtl .swiper-button-next:hover {
+  opacity: 1;
+  transition: .2s ease-in;
+}
+
+.swiper-button-prev.swiper-button-disabled, 
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0 !important;
+}
+
+.lazy-load-image-background {
+  display: inline !important;
 }
 
 .animate-title {
-  animation: smallsize 1.5s cubic-bezier(.165,.84,.44,1) 5s forwards 1;
+  animation: smallsize 1.5s cubic-bezier(.165, .84, .44, 1) 5s forwards 1;
 }
 
 .animate-overview {
-  animation: hiding 1.5s cubic-bezier(.165,.84,.44,1) 5s forwards 1;
+  animation: hiding 1.5s cubic-bezier(.165, .84, .44, 1) 5s forwards 1;
 }
 
 .animate-loading {
-  animation: loading 2s cubic-bezier(.165,.84,.44,1);
+  animation: loading 2s cubic-bezier(.165, .84, .44, 1);
 }
 
 @keyframes smallsize {

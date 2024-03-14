@@ -1,16 +1,41 @@
 import { Link } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import Dropdown from "./ui/Dropdown";
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
-    const getUser = localStorage.getItem('jwtToken')
-    const jwtdecode = getUser ? jwtDecode(getUser) : null
+    const [name, setName] = useState('')
     const navigate = useNavigate()
 
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+            withCredentials: true,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            setName(response.data)
+        })
+    }, [])
+
     const handleLogout = () => {
-        localStorage.removeItem('jwtToken')
-        navigate('/login')
+        try {
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
+                withCredentials: true,
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                if(response.data){
+                    navigate('/login')
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
     return (
         <header className='flex items-center justify-between py-4 px-11 max-[1024px]:px-4 z-[20] fixed w-full bg-gradient-to-b from-gray-900 to-transparent'>
@@ -25,21 +50,10 @@ export default function Navbar() {
                 <Link to='/tvshows' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out">TV Shows</Link>
                 <Link to='/movies' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out">Movies</Link>
             </div>
-            {jwtdecode ? (
-                <div className="flex justify-end items-center w-3/12 text-white">
-                    {/* <img src={'https://i.pravatar.cc/150?img=3'} alt="avatar" className="align-middle w-[30px] h-[30px] rounded-[50%]" />
-                    <span className="text-lg pr-4 pl-2">{jwtdecode.name} </span>
-                    <Link to='/' onClick={handleLogout} className="bg-orange-500 px-6 py-2 rounded-md cursor-pointer hover:bg-orange-600 duration-100 ease-in-out">Sign Out</Link> */}
-                    <Dropdown jwtdecodedName={jwtdecode.name} handleClick={handleLogout}/>
-                </div>
-            ) : (
-                // <div className="flex justify-end items-center w-2/12 text-white">
-                //     <Link to='/login' className="pr-4 cursor-pointer">Sign In</Link>
-                //     <Link to='/register' className="bg-orange-500 px-6 py-2 rounded-md cursor-pointer hover:bg-orange-600 duration-100 ease-in-out">Sign Up</Link>
-                // </div>
-                null
-            )}
-            
+            <div className="flex justify-end items-center w-3/12 text-white">
+                <Dropdown jwtdecodedName={name} handleClick={handleLogout} />
+            </div>
+
         </header>
     )
 }

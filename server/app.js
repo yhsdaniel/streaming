@@ -1,5 +1,5 @@
 import express, { urlencoded, json } from 'express'
-import router from './lib/router.js'
+import router from './routes/router.js'
 import cors from 'cors'
 import { createServer } from 'http'
 import cookieparser from 'cookie-parser'
@@ -21,16 +21,11 @@ app.use(urlencoded({
 app.use(json())
 app.use(cookieparser());
 app.use(cors({
-  origin: ['https://streaming-front-three.vercel.app', 'http://localhost:5173']
+  origin: ['https://streaming-front-three.vercel.app', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }))
-
-// app.use(
-//   cors({
-//     origin: ["streaming-front-three.vercel.app", "http://localhost:5173"],
-//     methods: ["POST", "GET"],
-//     credentials: true,
-//   })
-// );
 
 const server = createServer(app);
 
@@ -59,7 +54,3 @@ connect(MONGODB_URI, {
     console.error(err)
     process.exit(1)
   });
-
-// app.listen(port, () => {
-//   console.log(`Server is listening on port ${port}`)
-// })

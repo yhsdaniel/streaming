@@ -24,18 +24,24 @@ export default function Loginpage() {
 	const handleSubmitLogin = (e) => {
 		e.preventDefault()
 		try {
-			axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email: email, pass: pass }).then(response => {
-				const { token } = response.data
-				localStorage.setItem('jwtToken', token)
-				toast.success('Login Successfull!', {
-					duration: 1000,
-					position: 'top-center',
-					icon: '👏',
-					style: {
-						color: 'green'
-					}
-				})
-				navigate('/home')
+			axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email: email, pass: pass }, {
+				withCredentials: true,
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				}
+            }).then(response => {
+				if(response.data){
+					toast.success('Login Successfull!', {
+						duration: 1000,
+						position: 'top-center',
+						icon: '👏',
+						style: {
+							color: 'green'
+						}
+					})
+					navigate('/home')
+				}
 			})
 		} catch (error) {
 			console.error('Error', error)
@@ -65,7 +71,7 @@ export default function Loginpage() {
 								<LazyLoadImage
 									src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
 									alt={movie[0]?.title}
-									className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
+									className='inline w-full h-full rounded-l-lg rounded-bl-lg aspect-[3/5] object-cover'
 									effect="blur"
 								/>
 							</div>

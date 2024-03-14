@@ -31,8 +31,8 @@
     "react-lazy-load-image-component": "^1.6.0",
     "react-player": "^2.14.1",
     "react-router-dom": "^6.21.3",
-    "react-slick": "^0.30.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
