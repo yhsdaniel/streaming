@@ -682,10 +682,6 @@ video {
   aspect-ratio: 3/5;
 }
 
-.h-1\/2 {
-  height: 50%;
-}
-
 .h-40 {
   height: 10rem;
 }
@@ -1536,6 +1532,23 @@ body {
 @media (max-width: 600px) {
   .max-\[600px\]\:w-\[95\%\] {
     width: 95%;
+  }
+
+  .max-\[600px\]\:w-full {
+    width: 100%;
+  }
+
+  .max-\[600px\]\:w-6\/12 {
+    width: 50%;
+  }
+
+  .max-\[600px\]\:flex-col {
+    flex-direction: column;
+  }
+
+  .max-\[600px\]\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .max-\[600px\]\:text-3xl {

@@ -80,11 +80,11 @@ export default function Modal(props) {
                                                 Whistlist
                                             </div>
                                         </div>
-                                        <div className='flex justify-start items-start my-4'>
-                                            <div className='w-3/12'>
+                                        <div className='flex justify-start items-start max-[600px]:flex-col my-4'>
+                                            <div className='w-3/12 my-4 max-[600px]:w-6/12'>
                                                 <img src={props.image} alt="Image Alt" className='w-full h-full' />
                                             </div>
-                                            <div className='flex-1 px-4'>
+                                            <div className='flex-1 px-4 max-[600px]:w-full max-[600px]:px-0'>
                                                 <h1 className='text-3xl'>{props.title}</h1>
                                                 <p>{props.runtime}</p>
                                                 <p className='pt-6'>{props.overview}</p>
