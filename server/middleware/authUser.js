@@ -9,7 +9,7 @@ const authUser = {
             try {
                 const verified = jwt.verify(token, 'secret')
                 req.user = verified
-                return next()
+                next()
             } catch (error) {
                 return res.sendStatus(401)
             }
