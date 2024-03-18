@@ -52,7 +52,7 @@ const userController = {
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             return res.cookie('accessToken', token, {
-                                maxAge: 900000  
+                                maxAge: 900000
                             }).send('cookie set')
                         } else {
                             return res.status(400).send('Password invalid')
@@ -64,7 +64,7 @@ const userController = {
 
     async getLogin(req, res) {
         try {
-            res.send(req.user.name)
+            res.send({name: req.user.name, token: req.cookies.accessToken})
         } catch (error) {
             res.send('Error fetching user')
         }

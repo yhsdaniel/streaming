@@ -11,14 +11,22 @@ export default function Loginpage() {
 	const [pass, setPass] = useState('')
 	const navigate = useNavigate()
 
+	const getRequestAllDay = async () => {
+		await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+			setMovie(response.data)
+		})
+	}
+
+	const getUser = async () => {
+        const isAuth = document.cookie
+        if(isAuth) {
+            navigate('/home')
+        }
+    }
+
 	useEffect(() => {
-		try {
-			axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
-				setMovie(response.data)
-			})
-		} catch (error) {
-			console.error('Error', error)
-		}
+		getUser();
+		getRequestAllDay();
 	}, [])
 
 	const handleSubmitLogin = (e) => {
@@ -66,12 +74,12 @@ export default function Loginpage() {
 						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="mix-blend-darken" />
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
-						<section className="bg-white/90 my-auto mx-[25%] max-[1024px]:mx-[15%] max-[460px]:mx-[5%] max-[700px]:flex-col max-[700px]:w-full max-[700px]:mx-[5%] rounded-lg flex justify-center items-center">
+						<section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
 							<div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
 								<LazyLoadImage
 									src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
 									alt={movie[0]?.title}
-									className='inline w-full h-full rounded-l-lg rounded-bl-lg aspect-[3/5] object-cover'
+									className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
 									effect="blur"
 								/>
 							</div>

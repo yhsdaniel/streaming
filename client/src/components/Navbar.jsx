@@ -8,16 +8,24 @@ export default function Navbar() {
     const [name, setName] = useState('')
     const navigate = useNavigate()
 
-    useEffect(() => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+    const getUser = async () => {
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
             withCredentials: true,
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             }
         }).then(response => {
-            setName(response.data)
+            if(response.data){
+                setName(response.data.name)
+            } else {
+                navigate('/login')
+            }
         })
+    }
+
+    useEffect(() => {
+        getUser();
     }, [])
 
     const handleLogout = () => {
@@ -38,7 +46,7 @@ export default function Navbar() {
         }
     }
     return (
-        <header className='flex items-center justify-between py-4 px-11 max-[1024px]:px-4 z-[20] fixed w-full bg-gradient-to-b from-gray-900 to-transparent'>
+        <header className='flex items-center justify-between py-4 px-11 max-[500px]:px-4 max-[1024px]:px-4 z-[20] fixed w-full bg-gradient-to-b from-gray-900 to-transparent'>
             <div className="min-[701px]:hidden max-[700px]:block w-2/12">
                 <Link to='/home' className='text-orange-500 text-4xl font-bold cursor-pointer'>N</Link>
             </div>

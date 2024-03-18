@@ -1,23 +1,37 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import requests from "../../Request"
 import Modal from "../../components/Modal"
 
 export default function Main() {
     const [movie, setMovie] = useState('')
+    const navigate = useNavigate()
     const movies = movie[Math.floor(Math.random() * movie.length)]
     const urlImage = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`
-    
-    useEffect(() => {
-        axios.get(requests.requests.requestPopularMovies).then((response => {
-            setMovie(response.data.results)
+
+    const getPopularMovie = async () => {
+        await axios.get(requests.requests.requestPopularMovies).then((response => { 
+            setMovie(response.data.results) 
         }))
+    }
+
+    const getUser = async () => {
+        const isAuth = document.cookie
+        if(!isAuth) {
+            navigate('/login')
+        }
+    }
+
+    useEffect(() => {
+        getPopularMovie();
+        getUser();
     }, [])
 
     if (!movies) return null
 
     return (
-        <div style={{backgroundImage: `url(${urlImage})`}} className="w-full h-screen max-[1024px]:h-[30rem] relative flex justify-start items-center bg-center bg-cover">
+        <div style={{ backgroundImage: `url(${urlImage})` }} className="w-full h-screen max-[1024px]:h-[30rem] relative flex justify-start items-center bg-center bg-cover">
             <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
             <div className="absolute py-4 px-11 max-[1024px]:px-4 w-5/12 max-[1024px]:w-full flex flex-col">
                 <div className="text-white w-full">
@@ -35,9 +49,9 @@ export default function Main() {
                     </button>
                     <Modal
                         labelModal={true}
-                        id={movies?.id} 
-                        title={movies?.title} 
-                        overview={movies?.overview} 
+                        id={movies?.id}
+                        title={movies?.title}
+                        overview={movies?.overview}
                         date={movies?.release_date}
                         image={`https://image.tmdb.org/t/p/original/${movies?.poster_path}`}
                         runtime={movies?.runtime}

@@ -13,14 +13,22 @@ export default function RegisterPage() {
     // const [pass2, setPass2] = useState('')
     const navigate = useNavigate()
 
-    useEffect(() => {
-        try {
-            axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
-                setMovie(response.data)
-            })
-        } catch (error) {
-            console.error('Error fetching movies: ', error)
+    const getRequestAllDay = async () => {
+		await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+			setMovie(response.data)
+		})
+	}
+
+    const getUser = async () => {
+        const isAuth = document.cookie
+        if(isAuth) {
+            navigate('/home')
         }
+    }
+
+    useEffect(() => {
+        getRequestAllDay();
+        getUser();
     }, [])
 
     const handleSubmitRegister = (e) => {
@@ -107,7 +115,7 @@ export default function RegisterPage() {
                                         // onChange={handleChange}
                                         onChange={(e) => setPass2(e.target.value)}
                                     /> */}
-                                    <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign In</button>
+                                    <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
                                 </form>
                                 <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-gray-700 hover:text-gray-500">Sign In</Link></div>
                                 <div className="text-gray-700 text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>

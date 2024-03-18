@@ -50,13 +50,13 @@ export default function Sliding(props) {
 					slidesPerView: 5,
 					spaceBetween: 10
 				},
-				400: {
+				450: {
 					slidesPerView: 4,
-					spaceBetween: 10
+					spaceBetween: 5
 				},
 				320: {
 					slidesPerView: 3,
-					spaceBetween: 10
+					spaceBetween: 5
 				},
 			}}
 			modules={[Navigation, HashNavigation]}

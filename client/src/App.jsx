@@ -7,13 +7,13 @@ import MoviePage from './pages/Movies/page'
 import TVshowPage from './pages/TVshow/page'
 
 function App() {
-
+	
 	return (
 		<Routes>
 			<Route path='/' exact element={<Loginpage />}/>
-			<Route path='/login' element={<Loginpage />}/>
-			<Route path='home' element={<Homepage />}/>
+			<Route path='login' element={<Loginpage />}/>
 			<Route path='register' element={<RegisterPage />}/>
+			<Route path='home' element={<Homepage />}/>
 			<Route path='movies' element={<MoviePage />}/>
 			<Route path='tvshows' element={<TVshowPage />}/>
 		</Routes>
