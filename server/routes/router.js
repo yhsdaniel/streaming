@@ -9,7 +9,7 @@ dotenv.config()
 
 router.post('/register', userController.postRegister)
 router.post('/login', userController.postLogin)
-router.get('/user', authUser.authLogin, userController.getLogin)
+router.get('/user', userController.getLogin)
 router.get('/logout', userController.postLogout)
 
 router.get('/requestTopRatedTVSeries', apiController.requestTopRatedTVSeries)

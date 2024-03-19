@@ -34,10 +34,14 @@ const userController = {
     async postLogin(req, res) {
         const email = req.body.email
         const password = req.body.pass
-        
-        await User.findOne({ email: email }).then(user => {
+
+        await User.findOne({
+            email: email
+        }).then(user => {
             if (!user) {
-                return res.status(403).send({ emailNotFound: 'Email not registered' })
+                return res.status(403).send({
+                    emailNotFound: 'Email not registered'
+                })
             } else {
                 //Match password
                 bcrypt.compare(password, user.password)
@@ -48,7 +52,7 @@ const userController = {
                                 id: user.id,
                                 name: user.name
                             }
-    
+
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             return res.cookie('accessToken', token, {
@@ -63,17 +67,28 @@ const userController = {
     },
 
     async getLogin(req, res) {
+        const token = req.cookies.accessToken
         try {
-            res.send({name: req.user.name, token: req.cookies.accessToken})
+            if (!token) {
+                return res.sendStatus(401)
+            } else {
+                const verified = jwt.verify(token, 'secret')
+                res.send({
+                    name: verified.name,
+                    token: token
+                })
+            }
         } catch (error) {
             res.send('Error fetching user')
         }
     },
 
-    async postLogout(req, res){
+    async postLogout(req, res) {
         res.clearCookie('accessToken')
         res.send('cookies cleared')
     }
 }
 
-export { userController }
+export {
+    userController
+}
