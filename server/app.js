@@ -21,7 +21,7 @@ app.use(urlencoded({
 app.use(json())
 app.use(cookieparser());
 app.use(cors({
-  origin: ['https://streaming-front-three.vercel.app', 'http://localhost:5173'],
+  origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
