@@ -16,7 +16,7 @@ export default function Main() {
         }))
     }
 
-    const getUser = async () => {
+    const getUser = () => {
         const isAuth = document.cookie
         if(!isAuth) {
             navigate('/login')
@@ -55,6 +55,7 @@ export default function Main() {
                         date={movies?.release_date}
                         image={`https://image.tmdb.org/t/p/original/${movies?.poster_path}`}
                         runtime={movies?.runtime}
+                        typesFilm={'movie'}
                     />
                 </div>
             </div>

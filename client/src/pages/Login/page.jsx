@@ -9,15 +9,18 @@ export default function Loginpage() {
 	const [movie, setMovie] = useState([])
 	const [email, setEmail] = useState('')
 	const [pass, setPass] = useState('')
+	const [loading, setLoading] = useState(true)
+
 	const navigate = useNavigate()
 
 	const getRequestAllDay = async () => {
-		await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+		await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
 			setMovie(response.data)
+			setLoading(false)
 		})
 	}
 
-	const getUser = async () => {
+	const getUser = () => {
         const isAuth = document.cookie
         if(isAuth) {
             navigate('/home')
@@ -74,6 +77,7 @@ export default function Loginpage() {
 						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="mix-blend-darken" />
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
+						{loading ? <div>Loading...</div> : 
 						<section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
 							<div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
 								<LazyLoadImage
@@ -107,6 +111,7 @@ export default function Loginpage() {
 								<div className="text-gray-700 text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
 							</div>
 						</section>
+						}
 					</div>
 				</div>
 			</motion.div>

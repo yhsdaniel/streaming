@@ -11,16 +11,14 @@ import 'swiper/css/navigation';
 export default function Sliding(props) {
 	const [movie, setMovie] = useState([])
 
+	const apiURL = async () => {
+		await axios.post(props.requestsAPI).then(response => {
+			setMovie(response.data)
+		}, error => console.log(error))
+	}
+
 	useEffect(() => {
-		try {
-			// eslint-disable-next-line react/prop-types
-			axios.get(props.requestsAPI).then(response => {
-				setMovie(response.data)
-			})
-		} catch (error) {
-			console.log(error)
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		apiURL();
 	}, [])
 
 	if (!movie) return null

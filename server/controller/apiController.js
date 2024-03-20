@@ -16,7 +16,7 @@ const requestUpcomingMovies = `https://api.themoviedb.org/3/movie/upcoming?api_k
 const apiController = {
     async requestPopularMovies(req, res){
         try {
-            axios.get(requestPopularMovies).then(response => {
+            await axios.get(requestPopularMovies).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
@@ -26,7 +26,7 @@ const apiController = {
 
     async requestTopRatedTVSeries(req, res){
         try {
-            axios.get(requestTopRatedTVSeries).then(response => {
+            await axios.get(requestTopRatedTVSeries).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
@@ -36,7 +36,7 @@ const apiController = {
     
     async requestTrendingTVSeries(req, res){
         try {
-            axios.get(requestTrendingTVSeries).then(response => {
+            await axios.get(requestTrendingTVSeries).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
@@ -46,7 +46,7 @@ const apiController = {
 
     async requestPopularTVSeries(req, res){
         try {
-            axios.get(requestPopularTVSeries).then(response => {
+            await axios.get(requestPopularTVSeries).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
@@ -56,7 +56,7 @@ const apiController = {
 
     async requestAllDay(req, res){
         try {
-            axios.get(requestAllDay).then(response => {
+            await axios.get(requestAllDay).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
@@ -66,7 +66,7 @@ const apiController = {
     
     async requestTopRatedMovies(req, res){
         try {
-            axios.get(requestTopRatedMovies).then(response => {
+            await axios.get(requestTopRatedMovies).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
@@ -76,7 +76,7 @@ const apiController = {
 
     async requestUpcomingMovies(req, res){
         try {
-            axios.get(requestUpcomingMovies).then(response => {
+            await axios.get(requestUpcomingMovies).then(response => {
                 res.status(200).json(response.data.results)
             })
         } catch (error) {
