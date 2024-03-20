@@ -15,15 +15,15 @@ export default function RegisterPage() {
     const navigate = useNavigate()
 
     const getRequestAllDay = async () => {
-		await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
-			setMovie(response.data)
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+            setMovie(response.data)
             setLoading(false)
-		})
-	}
+        })
+    }
 
     const getUser = () => {
         const isAuth = document.cookie
-        if(isAuth) {
+        if (isAuth) {
             navigate('/home')
         }
     }
@@ -73,44 +73,44 @@ export default function RegisterPage() {
                         <img src={`https://image.tmdb.org/t/p/original/${movie[1]?.backdrop_path}`} alt={movie[1]?.title} className="mix-blend-darken" />
                     </div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
-                        {loading ? <div>Loading...</div> : 
-                        <section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
-                            <div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
-                                <LazyLoadImage
-									src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
-									alt={movie[0]?.title}
-									className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
-									effect="blur"
-								/>
-                            </div>
-                            <div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-8">
-                                <form className="flex justify-start items-start flex-col" onSubmit={handleSubmitRegister}>
-                                    <div className="my-4 text-3xl font-bold text-gray-700"><h1>Sign Up</h1></div>
-                                    <input
-                                        type="text"
-                                        placeholder="Name"
-                                        value={name}
-                                        className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
-                                        // onChange={handleChange}
-                                        onChange={(e) => setName(e.target.value)}
+                        {loading ? <div>Loading...</div> :
+                            <section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
+                                <div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
+                                    <LazyLoadImage
+                                        src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
+                                        alt={movie[0]?.title}
+                                        className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
+                                        effect="blur"
                                     />
-                                    <input
-                                        type="email"
-                                        placeholder="Email address"
-                                        value={email}
-                                        className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
-                                        // onChange={handleChange}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                    <input
-                                        type="password"
-                                        placeholder="Password"
-                                        value={pass}
-                                        className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
-                                        // onChange={handleChange}
-                                        onChange={(e) => setPass(e.target.value)}
-                                    />
-                                    {/* <input
+                                </div>
+                                <div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-8">
+                                    <form className="flex justify-start items-start flex-col" onSubmit={handleSubmitRegister}>
+                                        <div className="my-4 text-3xl font-bold text-gray-700"><h1>Sign Up</h1></div>
+                                        <input
+                                            type="text"
+                                            placeholder="Name"
+                                            value={name}
+                                            className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
+                                            // onChange={handleChange}
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                        <input
+                                            type="email"
+                                            placeholder="Email address"
+                                            value={email}
+                                            className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
+                                            // onChange={handleChange}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="Password"
+                                            value={pass}
+                                            className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
+                                            // onChange={handleChange}
+                                            onChange={(e) => setPass(e.target.value)}
+                                        />
+                                        {/* <input
                                         type="password"
                                         placeholder="Re-enter Password"
                                         value={pass2}
@@ -118,12 +118,12 @@ export default function RegisterPage() {
                                         // onChange={handleChange}
                                         onChange={(e) => setPass2(e.target.value)}
                                     /> */}
-                                    <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
-                                </form>
-                                <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-gray-700 hover:text-gray-500">Sign In</Link></div>
-                                <div className="text-gray-700 text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
-                            </div>
-                        </section>
+                                        <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
+                                    </form>
+                                    <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-gray-700 hover:text-gray-500">Sign In</Link></div>
+                                    <div className="text-gray-700 text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
+                                </div>
+                            </section>
                         }
                     </div>
                 </div>

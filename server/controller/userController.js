@@ -68,11 +68,13 @@ const userController = {
 
     async getLogin(req, res) {
         const token = req.cookies.accessToken
+        console.log('test', token)
         try {
             if (!token) {
                 return res.sendStatus(401)
             } else {
                 const verified = jwt.verify(token, 'secret')
+                console.log('verified', verified)
                 res.send({
                     name: verified.name,
                     token: token

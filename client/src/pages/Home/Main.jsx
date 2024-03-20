@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import requests from "../../Request"
 import Modal from "../../components/Modal"
 
 export default function Main() {
     const [movie, setMovie] = useState('')
-    const navigate = useNavigate()
     const movies = movie[Math.floor(Math.random() * movie.length)]
     const urlImage = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`
+    const navigate = useNavigate()
 
     const getPopularMovie = async () => {
-        await axios.get(requests.requests.requestPopularMovies).then((response => { 
-            setMovie(response.data.results) 
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then((response => { 
+            setMovie(response.data)
         }))
     }
 

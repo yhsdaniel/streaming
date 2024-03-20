@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import VideoBanner from '../pages/Home/VideoBanner'
+import VideoBanner from '../pages/VideoBanner'
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Modal(props) {
