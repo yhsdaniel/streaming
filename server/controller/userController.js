@@ -56,7 +56,6 @@ const userController = {
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             return res.cookie('accessToken', token, {
-                                httpOnly: true,
                                 secure: true,
                                 expires: new Date(Date.now() + 1 * 3600000)
                             }).send('cookie set')
@@ -70,20 +69,19 @@ const userController = {
 
     async getLogin(req, res) {
         const token = req.cookies.accessToken
-        console.log('test', token)
-        try {
-            if (!token) {
-                return res.sendStatus(401)
-            } else {
+        if (!token) {
+            res.status(401).send('JWT codes not found')
+            return
+        } else {
+            try {
                 const verified = jwt.verify(token, 'secret')
-                console.log('verified', verified)
-                res.send({
+                res.json({
                     name: verified.name,
                     token: token
                 })
+            } catch (error) {
+                res.status(403).send('Invalid JWT token')
             }
-        } catch (error) {
-            res.send('Error fetching user')
         }
     },
 
