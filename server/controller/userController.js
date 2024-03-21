@@ -56,6 +56,7 @@ const userController = {
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             return res.cookie('accessToken', token, {
+                                httpOnly: false,
                                 secure: true,
                                 expires: new Date(Date.now() + 1 * 3600000)
                             }).send('cookie set')
@@ -80,6 +81,9 @@ const userController = {
                     token: token
                 })
             } catch (error) {
+                if(error instanceof jwt.TokenExpiredError){
+                    return res.status(401).send('JWT token has expried')
+                }
                 res.status(403).send('Invalid JWT token')
             }
         }

@@ -7,6 +7,10 @@ import dotenv from 'dotenv'
 const router = express.Router()
 dotenv.config()
 
+router.get('/', (req, res) => {
+    res.send('HELLO')
+})
+
 router.post('/register', userController.postRegister)
 router.post('/login', userController.postLogin)
 router.get('/user', userController.getLogin)
