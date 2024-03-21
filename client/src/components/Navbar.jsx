@@ -13,7 +13,8 @@ export default function Navbar() {
             withCredentials: true,
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // "Authorization": `Bearer ${token}`
             }
         }).then(response => {
             if(response.data){
