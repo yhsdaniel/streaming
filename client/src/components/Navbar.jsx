@@ -14,7 +14,6 @@ export default function Navbar() {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                // "Authorization": `Bearer ${token}`
             }
         }).then(response => {
             if(response.data){
