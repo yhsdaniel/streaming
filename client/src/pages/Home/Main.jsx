@@ -17,6 +17,7 @@ export default function Main() {
 
     const getUser = () => {
         const isAuth = document.cookie
+        console.log(isAuth)
         if(!isAuth) {
             navigate('/login')
         }
