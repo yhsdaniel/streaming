@@ -56,8 +56,9 @@ const userController = {
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             return res.cookie('accessToken', token, {
-                                httpOnly: false,
-                                sameSite: 'none',
+                                httpOnly: true,
+                                secure: true,
+                                sameSite: 'Strict',
                                 expires: new Date(Date.now() + 1 * 3600000)
                             }).send('cookie set')
                         } else {
