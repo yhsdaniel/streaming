@@ -22,7 +22,7 @@ app.use(json())
 app.use(cookieparser());
 app.use(cors({
   origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
   credentials: true
 }))

@@ -17,6 +17,7 @@ export default function Navbar() {
             }
         }).then(response => {
             if(response.data){
+                console.log(response.data.name)
                 setName(response.data.name)
             } else {
                 navigate('/login')
