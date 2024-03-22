@@ -1,5 +1,5 @@
 {
-  "homepage": "https://streaming-front-three.vercel.app",
+  "homepage": ".",
   "name": "client",
   "private": true,
   "version": "0.0.0",
