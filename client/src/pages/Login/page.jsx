@@ -74,12 +74,12 @@ export default function Loginpage() {
 					<header className='flex items-center justify-between py-4 px-11  max-[1024px]:px-4 z-[20] absolute w-full bg-gradient-to-b from-gray-900 to-transparent'>
 						<h1 className='text-orange-500 text-4xl cursor-default font-bold w-2/12'>NETEX</h1>
 					</header>
-					<div className="absolute -z-10 blur-md bg-black/25">
-						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="mix-blend-darken" />
+					<div className="absolute -z-10 blur-md bg-black/25 h-full">
+						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="mix-blend-darken object-cover h-full" />
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
 						{loading ? <div>Loading...</div> :
-							<section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
+							<section className="bg-white/70 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
 								<div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
 									<LazyLoadImage
 										src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
