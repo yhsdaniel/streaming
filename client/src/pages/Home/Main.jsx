@@ -15,12 +15,18 @@ export default function Main() {
         }))
     }
 
-    const getUser = () => {
-        const isAuth = document.cookie
-        console.log(isAuth)
-        if(!isAuth) {
-            navigate('/login')
-        }
+    const getUser = async () => {
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+            withCredentials: true,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            if(!response.data){
+                navigate('/login')
+            }
+        })
     }
 
     useEffect(() => {
