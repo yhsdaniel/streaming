@@ -1,4 +1,5 @@
 import express, { urlencoded, json } from 'express'
+import session from 'express-session'
 import router from './routes/router.js'
 import cors from 'cors'
 import { createServer } from 'http'
@@ -30,6 +31,11 @@ app.use(cors({
 const server = createServer(app);
 
 app.use('/', router)
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+}))
 
 connect(MONGODB_URI, {
     useNewUrlParser: true,
