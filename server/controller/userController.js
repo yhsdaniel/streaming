@@ -56,9 +56,10 @@ const userController = {
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             return res.cookie('accessToken', token, {
+                                httpOnly: true,
                                 secure: true,
-                                sameSite: 'none',
-                                expires: new Date(Date.now() + 1 * 3600000)
+                                sameSite: 'strict',
+                                maxAge: 86400000
                             }).json({ success: true })
                         } else {
                             return res.status(400).send('Password invalid')
