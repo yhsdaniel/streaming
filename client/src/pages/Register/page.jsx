@@ -74,7 +74,7 @@ export default function RegisterPage() {
                     </div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
                         {loading ? <div>Loading...</div> :
-                            <section className="bg-white/90 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
+                            <section className="bg-white/70 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
                                 <div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
                                     <LazyLoadImage
                                         src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
@@ -90,7 +90,7 @@ export default function RegisterPage() {
                                             type="text"
                                             placeholder="Name"
                                             value={name}
-                                            className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
+                                            className="mb-4 py-2 w-full text-gray-800 bg-transparent border-gray-500 border-b placeholder:text-gray-500"
                                             // onChange={handleChange}
                                             onChange={(e) => setName(e.target.value)}
                                         />
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                                             type="email"
                                             placeholder="Email address"
                                             value={email}
-                                            className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
+                                            className="mb-4 py-2 w-full text-gray-800 bg-transparent border-gray-500 border-b placeholder:text-gray-500"
                                             // onChange={handleChange}
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
@@ -106,21 +106,13 @@ export default function RegisterPage() {
                                             type="password"
                                             placeholder="Password"
                                             value={pass}
-                                            className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
+                                            className="mb-4 py-2 w-full text-gray-800 bg-transparent border-gray-500 border-b placeholder:text-gray-500"
                                             // onChange={handleChange}
                                             onChange={(e) => setPass(e.target.value)}
                                         />
-                                        {/* <input
-                                        type="password"
-                                        placeholder="Re-enter Password"
-                                        value={pass2}
-                                        className="mb-4 px-3 py-2 rounded-lg w-full text-gray-800 bg-transparent border-gray-500 border placeholder:text-gray-500"
-                                        // onChange={handleChange}
-                                        onChange={(e) => setPass2(e.target.value)}
-                                    /> */}
-                                        <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
+                                        <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
                                     </form>
-                                    <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-gray-700 hover:text-gray-500">Sign In</Link></div>
+                                    <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-blue-600 hover:text-blue-800">Sign In</Link></div>
                                     <div className="text-gray-700 text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
                                 </div>
                             </section>

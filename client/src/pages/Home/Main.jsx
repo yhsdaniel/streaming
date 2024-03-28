@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Modal from "../../components/Modal"
 
@@ -7,7 +6,6 @@ export default function Main() {
     const [movie, setMovie] = useState('')
     const movies = movie[Math.floor(Math.random() * movie.length)]
     const urlImage = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`
-    const navigate = useNavigate()
 
     const getPopularMovie = async () => {
         await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then((response => { 
@@ -15,23 +13,8 @@ export default function Main() {
         }))
     }
 
-    const getUser = async () => {
-        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-            withCredentials: true,
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            }
-        }).then(response => {
-            if(!response.data){
-                navigate('/login')
-            }
-        })
-    }
-
     useEffect(() => {
         getPopularMovie();
-        getUser();
     }, [])
 
     if (!movies) return null

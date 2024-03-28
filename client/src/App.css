@@ -8,7 +8,12 @@ body {
     width: 100%;
     box-sizing: border-box;
     color: #fff;
-    font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-family: Monserrat , sans-serif;
+}
+
+input:focus-visible {
+    outline: none;
+    border-bottom: 1px solid #f97316;
 }
 
 .slick-prev:before,
