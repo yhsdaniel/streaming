@@ -77,7 +77,7 @@ const userController = {
         } else {
             try {
                 const verified = jwt.verify(token, 'secret')
-                res.json({
+                return res.json({
                     name: verified.name,
                     token: token
                 })
@@ -85,7 +85,7 @@ const userController = {
                 if(error instanceof jwt.TokenExpiredError){
                     return res.status(401).send('JWT token has expried')
                 }
-                res.status(403).send('Invalid JWT token')
+                return res.status(403).send('Invalid JWT token')
             }
         }
     },
