@@ -29,8 +29,10 @@ export default function RegisterPage() {
     }
 
     useEffect(() => {
-        getRequestAllDay();
-        getUser();
+        Promise.all([
+            getRequestAllDay(),
+            getUser()
+        ])
     }, [])
 
     const handleSubmitRegister = (e) => {
@@ -69,12 +71,12 @@ export default function RegisterPage() {
                     <header className='flex items-center justify-between py-4 px-11 z-[20] absolute w-full bg-gradient-to-b from-gray-900 to-transparent'>
                         <h1 className='text-orange-500 text-4xl cursor-default font-bold w-2/12'>NETEX</h1>
                     </header>
-                    <div className="absolute -z-10 blur-md bg-black/25 h-full">
-                        <img src={`https://image.tmdb.org/t/p/original/${movie[1]?.backdrop_path}`} alt={movie[1]?.title} className="mix-blend-darken object-cover h-full" />
-                    </div>
+                    <div className="absolute -z-10 bg-black opacity-35 bg-cover block min-h-full h-full overflow-hidden">
+						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="min-h-full min-w-full" />
+					</div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
                         {loading ? <div>Loading...</div> :
-                            <section className="bg-white/70 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
+                            <section className="bg-black/60 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
                                 <div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
                                     <LazyLoadImage
                                         src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
@@ -85,12 +87,12 @@ export default function RegisterPage() {
                                 </div>
                                 <div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-8">
                                     <form className="flex justify-start items-start flex-col" onSubmit={handleSubmitRegister}>
-                                        <div className="my-4 text-3xl font-bold text-gray-700"><h1>Sign Up</h1></div>
+                                        <div className="my-4 text-3xl font-bold text-white"><h1>Sign Up</h1></div>
                                         <input
                                             type="text"
                                             placeholder="Name"
                                             value={name}
-                                            className="mb-4 py-2 w-full text-gray-800 bg-transparent border-gray-500 border-b placeholder:text-gray-500"
+                                            className="mb-4 py-2 w-full text-white bg-transparent border-gray-500 border-b placeholder:text-gray-500 duration-200 ease-in"
                                             // onChange={handleChange}
                                             onChange={(e) => setName(e.target.value)}
                                         />
@@ -98,7 +100,7 @@ export default function RegisterPage() {
                                             type="email"
                                             placeholder="Email address"
                                             value={email}
-                                            className="mb-4 py-2 w-full text-gray-800 bg-transparent border-gray-500 border-b placeholder:text-gray-500"
+                                            className="mb-4 py-2 w-full text-white bg-transparent border-gray-500 border-b placeholder:text-gray-500 duration-200 ease-in"
                                             // onChange={handleChange}
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
@@ -106,14 +108,14 @@ export default function RegisterPage() {
                                             type="password"
                                             placeholder="Password"
                                             value={pass}
-                                            className="mb-4 py-2 w-full text-gray-800 bg-transparent border-gray-500 border-b placeholder:text-gray-500"
+                                            className="mb-4 py-2 w-full text-white bg-transparent border-gray-500 border-b placeholder:text-gray-500 duration-200 ease-in"
                                             // onChange={handleChange}
                                             onChange={(e) => setPass(e.target.value)}
                                         />
                                         <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
                                     </form>
-                                    <div className="text-gray-600 my-8 text-sm">Already have an account? <Link to='/login' className="text-blue-600 hover:text-blue-800">Sign In</Link></div>
-                                    <div className="text-gray-700 text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
+                                    <div className="text-white my-8 text-sm">Already have an account? <Link to='/login' className="text-blue-600 hover:text-blue-800">Sign In</Link></div>
+                                    <div className="text-white text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
                                 </div>
                             </section>
                         }
