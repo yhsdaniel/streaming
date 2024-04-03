@@ -27,8 +27,6 @@ export default function Homepage() {
     }).then(response => {
         if(!response.data){
             navigate('/login')
-        } else {
-            console.log(response.data)
         }
     })
   }
