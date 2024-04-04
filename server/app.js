@@ -23,12 +23,8 @@ app.use(cookieparser());
 app.use(cors({
   origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
   credentials: true,
-  allowedHeaders: [
-    "set-cookie",
-    "Content-Type",
-    "Access-Control-Allow-Origin",
-    "Access-Control-Allow-Headers"
-  ]
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
 }))
 
 const server = createServer(app);
