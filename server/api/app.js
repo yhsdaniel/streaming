@@ -1,5 +1,5 @@
 import express, { urlencoded, json } from 'express'
-import router from './routes/router.js'
+import router from '../routes/router.js'
 import cors from 'cors'
 import { createServer } from 'http'
 import cookieparser from 'cookie-parser'
