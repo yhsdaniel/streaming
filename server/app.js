@@ -27,7 +27,7 @@ app.use(cors({
     "set-cookie",
     "Content-Type",
     "Access-Control-Allow-Origin",
-    "Access-Control-Allow-Credentials"
+    "Access-Control-Allow-Headers"
   ]
 }))
 
