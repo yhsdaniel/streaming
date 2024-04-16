@@ -10,10 +10,8 @@
     {
       "src": "/[^.]+",
       "dest": "/",
-      "status": 200
+      "status": 200,
+      "handle": "filesystem"
     }
-  ],
-  "rewrites": [
-    {"source": "/(.*)", "destination": "/"}
   ]
 }
