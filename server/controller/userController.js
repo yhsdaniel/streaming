@@ -55,12 +55,15 @@ const userController = {
 
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
-                            return res.cookie('accessToken', token, {
-                                httpOnly: true,
-                                secure: true,
-                                sameSite: 'strict',
-                                maxAge: 86400000
-                            }).json({ success: true })
+                            const cookieCheck = req.cookies.accessToken
+                            if(cookieCheck === undefined){
+                                return res.cookie('accessToken', token, {
+                                    httpOnly: false,
+                                    secure: true,
+                                    sameSite: 'strict',
+                                    maxAge: 86400000
+                                }).json({ success: true })
+                            }
                         } else {
                             return res.status(400).send('Password invalid')
                         }
@@ -82,7 +85,7 @@ const userController = {
                     token: token
                 })
             } catch (error) {
-                if(error instanceof jwt.TokenExpiredError){
+                if(error){
                     return res.status(401).send('JWT token has expried')
                 }
                 return res.status(403).send('Invalid JWT token')
@@ -91,8 +94,11 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        res.clearCookie('accessToken')
-        res.send('cookies cleared')
+        const cookieCheck = req.cookies.accessToken
+        if(cookieCheck){
+            res.clearCookie('accessToken')
+            res.send('cookies cleared')
+        }
     }
 }
 
