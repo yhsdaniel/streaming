@@ -10,8 +10,7 @@
     {
       "src": "/[^.]+",
       "dest": "/",
-      "status": 200,
-      "handle": "filesystem"
+      "status": 200
     }
   ]
 }
