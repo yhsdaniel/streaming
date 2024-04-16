@@ -10,7 +10,7 @@ function App() {
 	
 	return (
 		<Routes>
-			<Route path='/' exact element={<Loginpage />}/>
+			<Route path='/' index element={<Loginpage />}/>
 			<Route path='login' element={<Loginpage />}/>
 			<Route path='register' element={<RegisterPage />}/>
 			<Route path='home' element={<Homepage />}/>
