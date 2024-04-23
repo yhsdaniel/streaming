@@ -20,30 +20,34 @@ export default function Loginpage() {
 			setLoading(false)
 		})
 	}
-
-	const getUser = () => {
-		const isAuth = document.cookie
-		if (isAuth) {
-			navigate('/home')
+	const getUser = async () => {
+		try {
+			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+				withCredentials: true,
+			}).then((response) => {
+				if(response.data){
+					navigate('/home')
+				}
+			})
+		} catch (error) {
+			if (error) {
+				navigate('/')
+			}
 		}
 	}
 
 	useEffect(() => {
 		Promise.all([
-			getUser(), 
+			getUser(),
 			getRequestAllDay()
 		])
 	}, [])
 
-	const handleSubmitLogin = (e) => {
+	const handleSubmitLogin = async (e) => {
 		e.preventDefault()
 		try {
-			axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email: email, pass: pass }, {
+			await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email: email, pass: pass }, {
 				withCredentials: true,
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json'
-				}
 			}).then(response => {
 				if (response.data) {
 					toast.success('Login Successfull!', {
@@ -55,6 +59,9 @@ export default function Loginpage() {
 						}
 					})
 					navigate('/home')
+				} else {
+					toast.error('Invalid Email and Password')
+					navigate('/')
 				}
 			})
 		} catch (error) {
@@ -80,7 +87,7 @@ export default function Loginpage() {
 						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="min-h-full min-w-full" />
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
-						{loading ? <div>Loading...</div> :
+						{loading ? <span className="loader"></span> :
 							<section className="bg-black/60 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
 								<div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
 									<LazyLoadImage

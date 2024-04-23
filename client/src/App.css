@@ -8,7 +8,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     color: #fff;
-    font-family: Monserrat , sans-serif;
+    font-family: Monserrat, sans-serif;
 }
 
 input:focus-visible {
@@ -49,7 +49,7 @@ input:focus-visible {
     object-fit: cover;
 }
 
-.swiper-button-next, 
+.swiper-button-next,
 .swiper-rtl .swiper-button-prev {
     opacity: 0;
     height: 100% !important;
@@ -59,7 +59,7 @@ input:focus-visible {
     background-image: linear-gradient(to left, rgba(0, 0, 0, .6), transparent);
 }
 
-.swiper-button-prev, 
+.swiper-button-prev,
 .swiper-rtl .swiper-button-next {
     opacity: 0;
     height: 100% !important;
@@ -69,15 +69,15 @@ input:focus-visible {
     background-image: linear-gradient(to right, rgba(0, 0, 0, .6), transparent);
 }
 
-.swiper-button-next:hover, 
+.swiper-button-next:hover,
 .swiper-rtl .swiper-button-prev:hover,
-.swiper-button-prev:hover, 
+.swiper-button-prev:hover,
 .swiper-rtl .swiper-button-next:hover {
     opacity: 1;
     transition: .2s ease-in;
 }
 
-.swiper-button-prev.swiper-button-disabled, 
+.swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
     opacity: 0 !important;
 }
@@ -96,6 +96,41 @@ input:focus-visible {
 
 .animate-loading {
     animation: loading 2s cubic-bezier(.165, .84, .44, 1);
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    z-index: 20;
+    background: linear-gradient(0deg, rgba(255, 61, 0, 0.2) 33%, #ff3d00 100%);
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #263238;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
 }
 
 @keyframes smallsize {

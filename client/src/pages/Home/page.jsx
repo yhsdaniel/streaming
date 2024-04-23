@@ -4,9 +4,6 @@ import PopularMovies from "../Movies/PopularMovies";
 import TrendingTVSeries from "../TVshow/TrendingTVSeries";
 import TopRatedTVSeries from "../TVshow/TopRatedTVSeries";
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
 export default function Homepage() {
   const title = {
@@ -15,26 +12,6 @@ export default function Homepage() {
     popularMovies: 'Top Popular Movies',
   }
 
-  const navigate = useNavigate()
-
-  const getUser = async () => {
-    await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-        withCredentials: true,
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }
-    }).then(response => {
-        if(!response.data){
-            navigate('/login')
-        }
-    })
-  }
-
-  useEffect(() => {
-    getUser()
-  }, [])
-  
   return (
     <AnimatePresence>
       <motion.div

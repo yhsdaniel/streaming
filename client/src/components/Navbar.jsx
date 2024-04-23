@@ -19,7 +19,7 @@ export default function Navbar() {
             if(response.data){
                 setName(response.data.name)
             } else {
-                navigate('/login')
+                navigate('/')
             }
         })
     }
@@ -38,7 +38,7 @@ export default function Navbar() {
                 }
             }).then((response) => {
                 if(response.data){
-                    navigate('/login')
+                    navigate('/')
                 }
             })
         } catch (error) {

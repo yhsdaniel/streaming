@@ -56,13 +56,15 @@ const userController = {
                             //Sign Token
                             const token = jwt.sign(payload, 'secret')
                             const cookieCheck = req.cookies.accessToken
-                            if(cookieCheck === undefined){
+                            if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
-                                    httpOnly: false,
-                                    secure: true,
+                                    httpOnly: true,
+                                    secure: false,
                                     sameSite: 'strict',
                                     maxAge: 86400000
-                                }).json({ success: true })
+                                }).json({
+                                    success: true
+                                })
                             }
                         } else {
                             return res.status(400).send('Password invalid')
@@ -75,27 +77,28 @@ const userController = {
     async getLogin(req, res) {
         const token = req.cookies.accessToken
         if (!token) {
-            res.status(401).send('JWT codes not found')
-            return
+            res.status(404).json({message: 'Token not found'})
         } else {
+            const verified = jwt.verify(token, 'secret')
             try {
-                const verified = jwt.verify(token, 'secret')
-                return res.json({
-                    name: verified.name,
-                    token: token
-                })
-            } catch (error) {
-                if(error){
-                    return res.status(401).send('JWT token has expried')
+                if(!verified){
+                    res.status(404).json({message: 'User Not Found'})
+                } else {
+                    return res.status(200).json({
+                        name: verified.name,
+                        token: token,
+                        message: 'Token and User Verified'
+                    })
                 }
-                return res.status(403).send('Invalid JWT token')
+            } catch (error) {
+                res.json({message: 'Token Invalid or Expired'})
             }
         }
     },
 
     async postLogout(req, res) {
         const cookieCheck = req.cookies.accessToken
-        if(cookieCheck){
+        if (cookieCheck) {
             res.clearCookie('accessToken')
             res.send('cookies cleared')
         }

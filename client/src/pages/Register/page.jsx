@@ -21,12 +21,21 @@ export default function RegisterPage() {
         })
     }
 
-    const getUser = () => {
-        const isAuth = document.cookie
-        if (isAuth) {
-            navigate('/home')
-        }
-    }
+    const getUser = async () => {
+		try {
+			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+				withCredentials: true,
+			}).then((response) => {
+				if(response.data){
+					navigate('/home')
+				}
+			})
+		} catch (error) {
+			if (error) {
+				navigate('/')
+			}
+		}
+	}
 
     useEffect(() => {
         Promise.all([
@@ -35,10 +44,10 @@ export default function RegisterPage() {
         ])
     }, [])
 
-    const handleSubmitRegister = (e) => {
+    const handleSubmitRegister = async (e) => {
         e.preventDefault()
         try {
-            axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, { name: name, email: email, pass: pass }).then(response => {
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, { name: name, email: email, pass: pass }).then(response => {
                 if (response.data) {
                     toast.success('Register Successfull!', {
                         duration: 1000,
@@ -49,7 +58,7 @@ export default function RegisterPage() {
                         }
                     })
                 }
-                navigate('/login')
+                navigate('/')
                 return response.data
             })
         } catch (error) {
@@ -75,7 +84,7 @@ export default function RegisterPage() {
 						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="min-h-full min-w-full" />
 					</div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
-                        {loading ? <div>Loading...</div> :
+                        {loading ? <span className="loader"></span> :
                             <section className="bg-black/60 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
                                 <div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
                                     <LazyLoadImage
@@ -114,7 +123,7 @@ export default function RegisterPage() {
                                         />
                                         <button type="submit" className="w-full bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600 cursor-pointer duration-150 ease-in-out mb-4">Sign Up</button>
                                     </form>
-                                    <div className="text-white my-8 text-sm">Already have an account? <Link to='/login' className="text-blue-600 hover:text-blue-800">Sign In</Link></div>
+                                    <div className="text-white my-8 text-sm">Already have an account? <Link to='/' className="text-blue-600 hover:text-blue-800">Sign In</Link></div>
                                     <div className="text-white text-xs"><p>This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. </p><a href="" className="text-blue-600">Learn more.</a></div>
                                 </div>
                             </section>
