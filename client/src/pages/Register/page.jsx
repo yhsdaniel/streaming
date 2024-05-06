@@ -32,7 +32,7 @@ export default function RegisterPage() {
 			})
 		} catch (error) {
 			if (error) {
-				navigate('/')
+				navigate('/register')
 			}
 		}
 	}
