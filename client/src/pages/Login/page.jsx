@@ -26,7 +26,7 @@ export default function Loginpage() {
 				withCredentials: true,
 			}).then((response) => {
 				if(response.data){
-					navigate('/home')
+					navigate('/dashboard')
 				}
 			})
 		} catch (error) {
@@ -58,7 +58,7 @@ export default function Loginpage() {
 							color: 'green'
 						}
 					})
-					navigate('/home')
+					navigate('/dashboard')
 				} else {
 					toast.error('Invalid Email and Password')
 					navigate('/')

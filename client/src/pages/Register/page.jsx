@@ -27,7 +27,7 @@ export default function RegisterPage() {
 				withCredentials: true,
 			}).then((response) => {
 				if(response.data){
-					navigate('/home')
+					navigate('/dashboard')
 				}
 			})
 		} catch (error) {

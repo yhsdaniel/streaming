@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import Main from "../Home/Main";
+import Main from "../Dashboard/Main";
 import PopularMovies from "./PopularMovies";
 import TopRatedMovies from "./TopRatedMovies";
 import UpcomingMovies from "./UpcomingMovies";

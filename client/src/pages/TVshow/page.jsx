@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import Main from "../Home/Main";
+import Main from "../Dashboard/Main";
 import TopRatedTVSeries from "./TopRatedTVSeries";
 import TrendingTVSeries from "./TrendingTVSeries";
 import PopularTVSeries from "./PopularTVSeries";
