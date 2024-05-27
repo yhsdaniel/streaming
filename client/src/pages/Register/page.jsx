@@ -81,7 +81,12 @@ export default function RegisterPage() {
                         <h1 className='text-orange-500 text-4xl cursor-default font-bold w-2/12'>NETEX</h1>
                     </header>
                     <div className="absolute -z-10 bg-black opacity-35 bg-cover block min-h-full h-full overflow-hidden">
-						<img src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} alt={movie[0]?.title} className="min-h-full min-w-full" />
+						<img 
+                            src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} 
+                            alt={movie[0]?.title} 
+                            className="min-h-full min-w-full"
+                            loading="eager"
+                        />
 					</div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
                         {loading ? <span className="loader"></span> :
@@ -92,6 +97,7 @@ export default function RegisterPage() {
                                         alt={movie[0]?.title}
                                         className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
                                         effect="blur"
+                                        loading="eager"
                                     />
                                 </div>
                                 <div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-8">
