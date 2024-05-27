@@ -13,21 +13,28 @@ const {
 } = process.env
 const port = process.env.PORT || 5000
 
+const corsOptions = {
+  origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Request-Headers'],
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  optionsSuccessStatus: 200 // Some legacy browsers choke on status 204
+}
+
 const app = express()
+const server = createServer(app);
 
 app.use(urlencoded({
   extended: false
 }))
 app.use(json())
 app.use(cookieparser());
-app.use(cors({
-  origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Request-Headers'],
-}))
-
-const server = createServer(app);
-
+app.use(cors(corsOptions))
+app.use((req, res, next) => {
+  console.log(`Request received: ${req.method} ${req.url}`)
+  next()
+})
+app.options('*', cors(corsOptions))
 app.use('/', router)
 
 connect(MONGODB_URI, {

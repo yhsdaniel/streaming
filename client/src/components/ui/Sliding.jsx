@@ -12,7 +12,7 @@ export default function Sliding(props) {
 	const [movie, setMovie] = useState([])
 
 	const apiURL = async () => {
-		await axios.post(props.requestsAPI).then(response => {
+		await axios.get(props.requestsAPI).then(response => {
 			setMovie(response.data)
 		}, error => console.log(error))
 	}

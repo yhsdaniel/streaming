@@ -10,9 +10,13 @@ export default function Main() {
     const navigate = useNavigate()
 
     const getPopularMovie = async () => {
-        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then((response => { 
-            setMovie(response.data)
-        }))
+        try {
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then((response => { 
+                setMovie(response.data)
+            }))
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const getUser = async () => {
@@ -22,7 +26,9 @@ export default function Main() {
 			}).then((response) => {
 				if(response.data){
 					navigate('/dashboard')
-				}
+				} else {
+                    navigate('/')
+                }
 			})
 		} catch (error) {
 			if (error) {

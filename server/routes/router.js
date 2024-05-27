@@ -16,13 +16,13 @@ router.post('/login', userController.postLogin)
 router.get('/user', userController.getLogin)
 router.get('/logout', userController.postLogout)
 
-router.post('/requestTopRatedTVSeries', apiController.requestTopRatedTVSeries)
-router.post('/requestTrendingTVSeries', apiController.requestTrendingTVSeries)
-router.post('/requestPopularTVSeries', apiController.requestPopularTVSeries)
+router.get('/requestTopRatedTVSeries', apiController.requestTopRatedTVSeries)
+router.get('/requestTrendingTVSeries', apiController.requestTrendingTVSeries)
+router.get('/requestPopularTVSeries', apiController.requestPopularTVSeries)
 
-router.post('/requestPopularMovies', apiController.requestPopularMovies)
-router.post('/requestTopRatedMovies', apiController.requestTopRatedMovies)
-router.post('/requestUpcomingMovies', apiController.requestUpcomingMovies)
+router.get('/requestPopularMovies', apiController.requestPopularMovies)
+router.get('/requestTopRatedMovies', apiController.requestTopRatedMovies)
+router.get('/requestUpcomingMovies', apiController.requestUpcomingMovies)
 
 router.post('/requestAllDay', apiController.requestAllDay)
 
