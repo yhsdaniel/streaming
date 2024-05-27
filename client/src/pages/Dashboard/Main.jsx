@@ -51,12 +51,12 @@ export default function Main() {
                     <p className="line-clamp-2">{movies?.overview}</p>
                 </div>
                 <div className="flex mt-8">
-                    <button className="bg-white px-8 py-2 text-lg text-black font-bold mr-2 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300 duration-150 ease-in-out z-10">
+                    {/* <button className="bg-white px-8 py-2 text-lg text-black font-bold mr-2 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300 duration-150 ease-in-out z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 mr-2">
                             <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
                         </svg>
                         Watch Now
-                    </button>
+                    </button> */}
                     <Modal
                         labelModal={true}
                         id={movies?.id}
