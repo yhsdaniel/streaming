@@ -51,10 +51,10 @@ export default function Main() {
             <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
             <div className="absolute py-4 px-11 max-[1024px]:px-4 w-5/12 max-[1024px]:w-full flex flex-col">
                 <div className="text-white w-full">
-                    {/* <h1 className="text-6xl my-6 animate-title max-[600px]:text-3xl">{movies?.original_title}</h1>
-                    <p className="line-clamp-2 animate-overview">{movies?.overview}</p> */}
-                    <h1 className="text-6xl my-6 max-[1024px]:text-3xl">{movies?.original_title}</h1>
-                    <p className="line-clamp-2">{movies?.overview}</p>
+                    <h1 className="text-6xl my-6 animate-title max-[600px]:text-3xl">{movies?.original_title}</h1>
+                    <p className="line-clamp-2 animate-overview">{movies?.overview}</p>
+                    {/* <h1 className="text-6xl my-6 max-[1024px]:text-3xl">{movies?.original_title}</h1>
+                    <p className="line-clamp-2">{movies?.overview}</p> */}
                 </div>
                 <div className="flex mt-8">
                     {/* <button className="bg-white px-8 py-2 text-lg text-black font-bold mr-2 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300 duration-150 ease-in-out z-10">

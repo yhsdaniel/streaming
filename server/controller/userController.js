@@ -58,8 +58,8 @@ const userController = {
                             const cookieCheck = req.cookies.accessToken
                             if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
-                                    httpOnly: true,
-                                    secure: false,
+                                    httpOnly: false,
+                                    secure: true,
                                     sameSite: 'strict',
                                     maxAge: 86400000
                                 }).json({
@@ -79,14 +79,14 @@ const userController = {
         if (!token) {
             res.status(404).json({message: 'Token not found'})
         } else {
-            const verified = jwt.verify(token, 'secret')
             try {
+                const verified = jwt.verify(token, 'secret')
                 if(!verified){
                     res.status(404).json({message: 'User Not Found'})
                 } else {
                     return res.status(200).json({
                         name: verified.name,
-                        token: token,
+                        token,
                         message: 'Token and User Verified'
                     })
                 }

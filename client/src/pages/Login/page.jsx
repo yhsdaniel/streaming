@@ -87,7 +87,7 @@ export default function Loginpage() {
 						<img 
 							src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} 
 							alt={movie[0]?.title} 
-							className="min-h-full min-w-full" 
+							className="min-h-full min-w-full object-cover" 
 							loading="eager"
 						/>
 					</div>
