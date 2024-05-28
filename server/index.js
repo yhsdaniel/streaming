@@ -30,7 +30,7 @@ app.use(urlencoded({
 app.use(json())
 app.use(cookieparser());
 // app.use(cors(corsOptions))
-app.use(cors(corsOptions), (req, res, next) => {
+app.use((req, res, next) => {
   console.log(`Request received: ${req.method} ${req.url}`)
   next()
 })
