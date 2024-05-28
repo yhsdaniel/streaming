@@ -58,10 +58,10 @@ const userController = {
                             const cookieCheck = req.cookies.accessToken
                             if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
-                                    httpOnly: false,
-                                    secure: true,
-                                    sameSite: 'strict',
-                                    maxAge: 86400000
+                                    httpOnly: true,
+                                    secure: process.env.NODE_ENV === 'production',
+                                    sameSite: 'None',
+                                    maxAge: 86400000,
                                 }).json({
                                     success: true
                                 })
