@@ -24,9 +24,8 @@ app.use(cookieparser());
 app.use(cors({
   origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
   credentials: true,
-  // allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Request-Headers'],
-  // methods: 'GET,POST,PUT,HEAD,DELETE,OPTIONS',
-  // optionsSuccessStatus: 200 // Some legacy browsers choke on status 204
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }))
 app.use((req, res, next) => {
   console.log(`Request received: ${req.method} ${req.url}`)
