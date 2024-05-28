@@ -97,11 +97,12 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        const cookieCheck = req.cookies.accessToken
-        if (cookieCheck) {
-            res.clearCookie('accessToken')
-            res.send('cookies cleared')
-        }
+        // const cookieCheck = req.cookies.accessToken
+        // if (cookieCheck) {
+        //     res.clearCookie('accessToken')
+        //     res.send('cookies cleared')
+        // }
+        return res.clearCookie('accessToken').status(200).json({ message: 'Successfully Logged Out' })
     }
 }
 

@@ -36,10 +36,8 @@ export default function Navbar() {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
                 }
-            }).then((response) => {
-                if(response.data){
-                    navigate('/')
-                }
+            }).then(() => {
+                navigate('/')
             })
         } catch (error) {
             console.log(error)
