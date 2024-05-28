@@ -16,7 +16,8 @@ const port = process.env.PORT || 5000
 const corsOptions = {
   origin: ['https://netex-app.vercel.app', 'http://localhost:5173'],
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Request-Headers'],
+  methods: 'GET,POST,PUT,HEAD,DELETE,OPTIONS',
   optionsSuccessStatus: 200 // Some legacy browsers choke on status 204
 }
 
@@ -28,8 +29,8 @@ app.use(urlencoded({
 }))
 app.use(json())
 app.use(cookieparser());
-app.use(cors(corsOptions))
-app.use((req, res, next) => {
+// app.use(cors(corsOptions))
+app.use(cors(corsOptions), (req, res, next) => {
   console.log(`Request received: ${req.method} ${req.url}`)
   next()
 })
