@@ -15,9 +15,11 @@ export default function Loginpage() {
 
 	const getRequestAllDay = async () => {
 		setLoading(true)
-		await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+		await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
 			setMovie(response.data)
-			setLoading(false)
+			if(response.data){
+				setLoading(false)
+			}
 		})
 	}
 	const getUser = async () => {
@@ -84,23 +86,24 @@ export default function Loginpage() {
 						<h1 className='text-orange-500 text-4xl cursor-default font-bold w-2/12'>NETEX</h1>
 					</header>
 					<div className="absolute -z-10 bg-black opacity-35 bg-cover block min-h-full h-full overflow-hidden">
-						<img 
+						<LazyLoadImage 
 							src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} 
-							alt={movie[0]?.title} 
+							alt='Image Sample' 
 							className="min-h-full min-w-full object-cover" 
-							loading="eager"
+							effect="blur"
+							loading="lazy"
 						/>
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
-						{loading ? <span className="loader"></span> :
+						{loading && movie ? <span className="loader"></span> :
 							<section className="bg-black/60 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
 								<div className="w-6/12 max-[700px]:w-3/4 max-[700px]:hidden">
 									<LazyLoadImage
 										src={`https://image.tmdb.org/t/p/original/${movie[0]?.poster_path}`}
-										alt={movie[0]?.title}
+										alt='Image Sample'
 										className='inline w-full h-full object-cover rounded-l-lg rounded-bl-lg'
 										effect="blur"
-										loading="eager"
+										loading="lazy"
 									/>
 								</div>
 								<div className="w-6/12 px-8 h-full max-[700px]:w-3/4 max-[700px]:px-0 max-[700px]:py-8">

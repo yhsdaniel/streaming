@@ -11,7 +11,7 @@ export default function Main() {
 
     const getPopularMovie = async () => {
         try {
-            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then((response => { 
+            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then((response => {
                 setMovie(response.data)
             }))
         } catch (error) {
@@ -24,7 +24,7 @@ export default function Main() {
 			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
 				withCredentials: true,
 			}).then((response) => {
-				if(response.data){
+				if(response.status == 200){
 					navigate('/dashboard')
 				} else {
                     navigate('/')

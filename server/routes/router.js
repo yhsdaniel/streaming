@@ -24,6 +24,6 @@ router.get('/requestPopularMovies', apiController.requestPopularMovies)
 router.get('/requestTopRatedMovies', apiController.requestTopRatedMovies)
 router.get('/requestUpcomingMovies', apiController.requestUpcomingMovies)
 
-router.post('/requestAllDay', apiController.requestAllDay)
+router.get('/requestAllDay', apiController.requestAllDay)
 
 export default router

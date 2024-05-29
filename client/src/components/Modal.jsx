@@ -33,9 +33,9 @@ export default function Modal(props) {
                     key={props.id}
                     className='w-full h-full'
                     alt='Image'
-                    srcSet={props.image}
+                    src={props.image}
                     effect="blur"
-                    loading='eager'
+                    loading='lazy'
                     onClick={openModal}
                 />
             }

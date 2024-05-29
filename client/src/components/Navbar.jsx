@@ -28,16 +28,14 @@ export default function Navbar() {
         getUser();
     }, [])
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         try {
-            axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
-                withCredentials: true,
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
+            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
+                withCredentials: true
+            }).then((response) => {
+                if(response.status == 200) {
+                    navigate('/')
                 }
-            }).then(() => {
-                navigate('/')
             })
         } catch (error) {
             console.log(error)
