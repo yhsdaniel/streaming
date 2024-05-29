@@ -28,7 +28,7 @@ function App() {
 	
 	return (
 		<Routes>
-			<Route path='/' index element={<Loginpage />} />
+			<Route path='/' exact element={<Loginpage />} />
 			<Route path='/register' element={<RegisterPage />} />
 			<Route path='/dashboard' element={<Homepage />} />
 			<Route path='/movies' element={<MoviePage />} />

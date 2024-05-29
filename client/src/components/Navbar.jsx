@@ -32,10 +32,8 @@ export default function Navbar() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
                 withCredentials: true
-            }).then((response) => {
-                if(response.status == 200) {
-                    navigate('/')
-                }
+            }).then(() => {
+                navigate('/')
             })
         } catch (error) {
             console.log(error)

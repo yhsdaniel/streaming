@@ -62,6 +62,7 @@ const userController = {
                                     secure: process.env.NODE_ENV === 'production',
                                     sameSite: 'None',
                                     maxAge: 86400000,
+                                    path: '/'
                                 }).json({
                                     success: true
                                 })
@@ -97,7 +98,7 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        return res.clearCookie('accessToken').status(200).json({ message: 'Successfully Logged Out!' })
+        return res.clearCookie('accessToken', { path: '/' }).status(200).json({ message: 'Successfully Logged Out!' })
     }
 }
 
