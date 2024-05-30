@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/register', userController.postRegister)
 router.post('/login', userController.postLogin)
 router.get('/user', userController.getLogin)
-router.post('/logout', userController.postLogout)
+router.get('/logout', userController.postLogout)
 
 router.get('/requestTopRatedTVSeries', apiController.requestTopRatedTVSeries)
 router.get('/requestTrendingTVSeries', apiController.requestTrendingTVSeries)

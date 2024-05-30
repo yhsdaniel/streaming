@@ -9,27 +9,10 @@ import TVshowPage from './pages/TVshow/page'
 import { useEffect } from 'react'
 
 function App() {
-	const navigate = useNavigate()
-	const getUser = async () => {
-		try {
-			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-				withCredentials: true,
-			})
-		} catch (error) {
-			if (error) {
-				navigate('/')
-			}
-		}
-	}
-
-	useEffect(() => {
-		getUser()
-	}, [])
 	
 	return (
 		<Routes>
 			<Route path='/' exact element={<Loginpage />} />
-			<Route path='/login' element={<Loginpage />} />
 			<Route path='/register' element={<RegisterPage />} />
 			<Route path='/dashboard' element={<Homepage />} />
 			<Route path='/movies' element={<MoviePage />} />

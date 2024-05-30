@@ -18,7 +18,7 @@ export default function Navbar() {
             if(response.data){
                 setName(response.data.name)
             } else {
-                navigate('/login')
+                navigate('/')
             }
         })
     }
@@ -29,21 +29,13 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         try {
-            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
-                withCredentials: true,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((response) => {
-                console.log('Logged succesfull, redirect...')
-                if(response.status === 200){
-                    navigate('/')
-                } else {
-                    console.error('Failed to Login Page')
-                }
+            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
+                withCredentials: true
+            }).then(() => {
+                navigate('/')
             })
         } catch (error) {
-            console.log('Error logging out: ', error)
+            console.log(error)
         }
     }
     return (

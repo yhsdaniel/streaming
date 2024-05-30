@@ -58,7 +58,7 @@ export default function RegisterPage() {
                         }
                     })
                 }
-                navigate('/login')
+                navigate('/')
                 return response.data
             })
         } catch (error) {
