@@ -24,11 +24,9 @@ export default function Main() {
 			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
 				withCredentials: true,
 			}).then((response) => {
-				if(response.status == 200){
-					navigate('/dashboard')
-				} else {
+				if(response.status !== 200){
                     navigate('/')
-                }
+				}
 			})
 		} catch (error) {
 			if (error) {
