@@ -103,7 +103,7 @@ const userController = {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'none',
-                maxAge: 1000 * 60 * 60 * 24,
+                maxAge: new Date(0),
                 path: '/'
             }).status(200).json({ message: 'Cookies Removed' })
         }
