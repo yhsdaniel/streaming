@@ -58,7 +58,7 @@ const userController = {
                             const cookieCheck = req.cookies.accessToken
                             if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
-                                    httpOnly: true,
+                                    httpOnly: false,
                                     secure: process.env.NODE_ENV === 'production',
                                     sameSite: 'none',
                                     maxAge: 1000 * 60 * 60 * 24,
