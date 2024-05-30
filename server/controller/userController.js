@@ -58,7 +58,7 @@ const userController = {
                             const cookieCheck = req.cookies.accessToken
                             if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
-                                    httpOnly: false,
+                                    httpOnly: true,
                                     secure: process.env.NODE_ENV === 'production',
                                     sameSite: 'none',
                                     maxAge: 1000 * 60 * 60 * 24,
@@ -99,7 +99,13 @@ const userController = {
     async postLogout(req, res) {
         const cookiesToken = req.cookies.accessToken
         if(cookiesToken){
-            return res.clearCookie('accessToken', { path: '/' }).status(200).json({ message: 'Cookies Removed' })
+            return res.clearCookie('accessToken', { 
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'none',
+                maxAge: 1000 * 60 * 60 * 24,
+                path: '/'
+            }).status(200).json({ message: 'Cookies Removed' })
         }
     }
 }
