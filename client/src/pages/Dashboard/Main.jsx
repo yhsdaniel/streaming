@@ -27,7 +27,7 @@ export default function Main() {
 				if(response.status == 200){
 					navigate('/dashboard')
 				} else {
-                    navigate('/')
+                    navigate('/login')
                 }
 			})
 		} catch (error) {

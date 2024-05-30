@@ -12,14 +12,13 @@ export default function Navbar() {
         await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
             withCredentials: true,
             headers: {
-                Accept: 'application/json',
                 'Content-Type': 'application/json',
             }
         }).then(response => {
             if(response.data){
                 setName(response.data.name)
             } else {
-                navigate('/')
+                navigate('/login')
             }
         })
     }
@@ -30,12 +29,13 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         try {
-            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }).then((response) => {
+                console.log('Logged succesfull, redirect...')
                 if(response.status === 200){
                     navigate('/')
                 } else {
