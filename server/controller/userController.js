@@ -62,6 +62,7 @@ const userController = {
                                     secure: process.env.NODE_ENV === 'production',
                                     sameSite: 'none',
                                     maxAge: 1000 * 60 * 60 * 24,
+                                    path: '/'
                                 })
                                 .send('Cookie Set')
                             }
@@ -96,7 +97,10 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        return res.clearCookie(`accessToken`).status(200).json({ message: 'Cookies Removed' })
+        const cookiesToken = req.cookies.accessToken
+        if(cookiesToken){
+            return res.clearCookie('accessToken', { path: '/' }).status(200).json({ message: 'Cookies Removed' })
+        }
     }
 }
 
