@@ -28,9 +28,6 @@ export default function Sliding(props) {
 			slidesPerView={8}
 			spaceBetween={10}
 			navigation={true}
-			// hashNavigation={{
-			// 	watchState: true
-			// }}
 			breakpoints={{
 				1440: {
 					slidesPerView: 8,

@@ -67,8 +67,8 @@ export default function Modal(props) {
                             >
                                 <Dialog.Panel className="w-[80%] h-[90%] max-[600px]:w-[95%] transform rounded-2xl bg-black text-left overflow-auto align-middle shadow-xl transition-all">
                                     <VideoBanner id={props.id} title={props.title} videoTypes={props.typesFilm} />
-                                    <div className='mt-4 px-8 bg-black w-full flex justify-center items-start flex-col'>
-                                        <div className='flex justify-start items-center my-4'>
+                                    <div className='mt-4 px-8 bg-black w-full flex justify-center items-start flex-col max-[600px]:px-2'>
+                                        {/* <div className='flex justify-start items-center my-4'>
                                             <div className='cursor-pointer flex justify-center items-center text-black hover:text-orange-500 duration-150 ease-in-out font-bold rounded bg-white/90 px-4'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 my-2 mr-2 cursor-pointer">
                                                     <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
@@ -81,12 +81,12 @@ export default function Modal(props) {
                                                 </svg>
                                                 Whistlist
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className='flex justify-start items-start max-[600px]:flex-col my-4'>
-                                            <div className='w-3/12 my-4 max-[600px]:w-6/12'>
+                                            <div className='w-3/12 max-[600px]:w-6/12'>
                                                 <img src={props.image} alt="Image Alt" className='w-full h-full' />
                                             </div>
-                                            <div className='flex-1 px-4 max-[600px]:w-full max-[600px]:px-0'>
+                                            <div className='flex-1 px-4 max-[600px]:w-full max-[600px]:px-0 max-[600px]:py-4'>
                                                 <h1 className='text-3xl'>{props.title}</h1>
                                                 <p>{props.runtime}</p>
                                                 <p className='pt-6'>{props.overview}</p>
