@@ -97,7 +97,13 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        return res.clearCookie(`accessToken`).status(200).json({message: 'Cookies Removed'})
+        // return res.clearCookie(`accessToken`).status(200).json({message: 'Cookies Removed'})
+        res.clearCookie('accessToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        })
+        res.json({ succes: true })
     }
 }
 

@@ -3,12 +3,10 @@ import Dropdown from "./ui/Dropdown";
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from "react";
-import Cookies from 'js-cookie'
 
 export default function Navbar() {
     const [name, setName] = useState('')
     const navigate = useNavigate()
-    console.log(Cookies.get())
 
     const getUser = async () => {
         await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
@@ -33,14 +31,19 @@ export default function Navbar() {
     const handleLogout = async () => {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
-                withCredentials: true
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }).then((response) => {
-                if(response.status === 200) {
+                if(response.status === 200){
                     navigate('/')
+                } else {
+                    console.error('Failed to Login Page')
                 }
             })
         } catch (error) {
-            console.log(error)
+            console.log('Error logging out: ', error)
         }
     }
     return (
