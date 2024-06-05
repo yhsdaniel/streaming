@@ -59,7 +59,7 @@ const userController = {
                             if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
                                     httpOnly: true,
-                                    secure: process.env.NODE_ENV === 'production',
+                                    secure: true,
                                     sameSite: 'none',
                                     maxAge: 1000 * 60 * 60 * 24,
                                     path: '/'
@@ -101,7 +101,7 @@ const userController = {
         if(cookiesToken){
             return res.clearCookie('accessToken', {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
+                secure: true,
                 sameSite: 'none',
                 expires: new Date(0),
                 path: '/'

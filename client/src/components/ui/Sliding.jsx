@@ -53,7 +53,7 @@ export default function Sliding(props) {
 					spaceBetween: 5
 				},
 				320: {
-					slidesPerView: 3,
+					slidesPerView: 4,
 					spaceBetween: 5
 				},
 			}}
@@ -66,7 +66,7 @@ export default function Sliding(props) {
 						labelModal={false}
                         id={val?.id} 
                         title={val?.title} 
-                        overview={val?.overview} 
+                        overview={val?.overview}
                         date={val?.release_date}
                         image={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
                         runtime={val?.runtime}
