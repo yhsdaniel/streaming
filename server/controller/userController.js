@@ -59,9 +59,9 @@ const userController = {
                             if (cookieCheck === undefined) {
                                 return res.cookie('accessToken', token, {
                                     httpOnly: true,
-                                    secure: true,
-                                    sameSite: 'none',
-                                    maxAge: 1000 * 60 * 60 * 24,
+                                    secure: process.env.NODE_ENV === 'production',
+                                    sameSite: 'Strict',
+                                    maxAge: 1000 * 60 * 60 * 24
                                 })
                                 .send('Cookie Set')
                             }
@@ -100,9 +100,9 @@ const userController = {
         if(cookiesToken){
             return res.clearCookie('accessToken', { 
                 httpOnly: true,
-                secure: true,
-                sameSite: 'none',
-                expires: new Date(0),
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'Strict',
+                expires: new Date(0)
             }).status(200).json({ message: 'Cookies Removed' })
         }
     }
