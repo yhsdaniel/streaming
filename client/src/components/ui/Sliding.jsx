@@ -33,7 +33,7 @@ export default function Sliding(props) {
 			navigation={true}
 			breakpoints={{
 				1440: {
-					slidesPerView: 8,
+					slidesPerView: 7,
 					spaceBetween: 10
 				},
 				1200: {
