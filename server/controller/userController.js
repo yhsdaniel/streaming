@@ -60,8 +60,9 @@ const userController = {
                                 return res.cookie('accessToken', token, {
                                     httpOnly: true,
                                     secure: process.env.NODE_ENV === 'production',
-                                    sameSite: 'Strict',
-                                    maxAge: 1000 * 60 * 60 * 24
+                                    sameSite: 'none',
+                                    maxAge: 1000 * 60 * 60 * 24,
+                                    path: '/'
                                 })
                                 .send('Cookie Set')
                             }
@@ -96,13 +97,15 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        const cookiesToken = req.cookies.accessToken
+        const cookiesToken = req.cookies['accessToken']
+        console.log(cookiesToken)
         if(cookiesToken){
             return res.clearCookie('accessToken', { 
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'Strict',
-                expires: new Date(0)
+                sameSite: 'none',
+                expires: new Date(0),
+                path: '/'
             }).status(200).json({ message: 'Cookies Removed' })
         }
     }
