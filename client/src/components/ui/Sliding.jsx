@@ -26,6 +26,9 @@ export default function Sliding(props) {
 	return (
 		<Swiper
 			slidesPerView={8}
+			slidesPerGroup={1}
+			slideToClickedSlide={true}
+			loop={true}
 			spaceBetween={10}
 			navigation={true}
 			breakpoints={{
@@ -58,7 +61,7 @@ export default function Sliding(props) {
 			className='mySwiper'
 		>	
 			{movie?.map(val => (
-				<SwiperSlide key={val.id} data-hash={val.id} className='cursor-pointer'>
+				<SwiperSlide key={val.id} data-hash={val.id} className='cursor-pointer p-2 bg-gray-600 shadow-inner shadow-white'>
 					<Modal 
 						labelModal={false}
                         id={val?.id} 
@@ -67,6 +70,7 @@ export default function Sliding(props) {
                         date={val?.release_date}
                         image={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
                         runtime={val?.runtime}
+						rating={val?.vote_average.toFixed(1)}
 						typesFilm={props.types}
                     />
 				</SwiperSlide>

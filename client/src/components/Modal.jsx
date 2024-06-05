@@ -21,7 +21,7 @@ export default function Modal(props) {
                 <button
                     type="button"
                     onClick={openModal}
-                    className="bg-gray-400/65 px-6 py-2 text-lg text-white font-bold flex justify-center items-center rounded cursor-pointer hover:bg-gray-400/90 duration-150 ease-in-out z-10"
+                    className="bg-gray-600 px-6 py-2 text-base text-white font-bold flex justify-center items-center rounded-3xl cursor-pointer hover:bg-gray-500 duration-150 ease-in-out z-10"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 mr-2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
@@ -89,8 +89,11 @@ export default function Modal(props) {
                                             <div className='flex-1 px-4 max-[600px]:w-full max-[600px]:px-0 max-[600px]:py-4'>
                                                 <h1 className='text-3xl'>{props.title}</h1>
                                                 <p>{props.runtime}</p>
+                                                <div className='flex justify-center items-start my-4 h-8'>
+                                                    <h1 className="w-3/12 h-full text-xl max-[1024px]:text-xl"><span class="fa fa-star text-orange-300"></span> {props.rating} / 10</h1>
+                                                    <p className='flex-1 text-sm h-full'>Release date: {props.date}</p>
+                                                </div>
                                                 <p className='pt-6'>{props.overview}</p>
-                                                <p className='mt-8 text-sm'>Release date: {props.date}</p>
                                             </div>
                                         </div>
                                     </div>

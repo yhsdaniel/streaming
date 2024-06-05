@@ -5,7 +5,7 @@ export default function PopularMovies(props) {
 	
 	return (
 		<div className='-translate-y-24'>
-			<div className='py-4 px-11 max-[1024px]:px-4'>
+			<div className='py-4 px-11 max-[1024px]:px-4 overflow-hidden'>
 				<h1 className='text-2xl my-4'>{props.title}</h1>
 				<Sliding requestsAPI={`${import.meta.env.VITE_BACKEND_URL}/requestPopularMovies`} types={'movie'}/>
 			</div>
