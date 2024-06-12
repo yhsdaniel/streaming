@@ -38,8 +38,6 @@ export default function Modal(props) {
                     loading='lazy'
                     fetchPriority='high'
                     onClick={openModal}
-                    width={182}
-                    height={282}
                 />
             }
 
