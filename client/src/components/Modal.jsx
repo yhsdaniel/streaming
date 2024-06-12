@@ -36,7 +36,10 @@ export default function Modal(props) {
                     src={props.image}
                     effect="blur"
                     loading='lazy'
+                    fetchPriority='high'
                     onClick={openModal}
+                    width={182}
+                    height={282}
                 />
             }
 
@@ -76,7 +79,7 @@ export default function Modal(props) {
                                                 <h1 className='text-3xl'>{props.title}</h1>
                                                 <p>{props.runtime}</p>
                                                 <div className='flex justify-center items-start my-4 h-8'>
-                                                    <h1 className="w-3/12 h-full text-xl max-[1024px]:text-xl"><span class="fa fa-star text-orange-300"></span> {props.rating} / 10</h1>
+                                                    <h1 className="w-3/12 h-full text-xl max-[1024px]:text-xl"><span className="fa fa-star text-orange-300"></span> {props.rating} / 10</h1>
                                                     <p className='flex-1 text-sm h-full'>Release date: {props.date}</p>
                                                 </div>
                                                 <p className='pt-6'>{props.overview}</p>

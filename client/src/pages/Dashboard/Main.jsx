@@ -20,20 +20,20 @@ export default function Main() {
     }
 
     const getUser = async () => {
-		try {
-			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-				withCredentials: true,
-			}).then((response) => {
-				if(response.status !== 200){
+        try {
+            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+                withCredentials: true,
+            }).then((response) => {
+                if (response.status !== 200) {
                     navigate('/')
-				}
-			})
-		} catch (error) {
-			if (error) {
-				navigate('/')
-			}
-		}
-	}
+                }
+            })
+        } catch (error) {
+            if (error) {
+                navigate('/')
+            }
+        }
+    }
 
     useEffect(() => {
         Promise.all([
@@ -51,21 +51,14 @@ export default function Main() {
                 <div className="text-white w-full">
                     {/* <h1 className="text-6xl my-6 animate-title max-[600px]:text-3xl">{movies?.original_title}</h1>
                     <p className="line-clamp-2 animate-overview">{movies?.overview}</p> */}
-                    <h1 className="text-[4rem] my-6 max-[1024px]:text-3xl">{movies?.original_title}</h1>
+                    <h1 className="text-[4rem] my-6 max-[1024px]:text-3xl">{movies?.original_title || movies?.original_name}</h1>
                     <div className='flex justify-center items-start my-4 h-8'>
-                        <h1 className="w-6/12 h-full text-xl max-[1024px]:text-xl"><span class="fa fa-star text-orange-300"></span> {movies?.vote_average.toFixed(1)} / 10</h1>
+                        <h1 className="w-6/12 h-full text-xl max-[1024px]:text-xl"><span className="fa fa-star text-orange-300"></span> {movies?.vote_average.toFixed(1)} / 10</h1>
                         <p className='flex-1 text-sm h-full'>Release date: {movies?.release_date}</p>
                     </div>
-                    {/* <h1 className="text-2xl my-2 max-[1024px]:text-xl"><span class="fa fa-star text-orange-300"></span> {movies?.vote_average.toFixed(1)} / 10</h1> */}
                     <p className="line-clamp-2">{movies?.overview}</p>
                 </div>
                 <div className="flex mt-8">
-                    {/* <button className="bg-white px-8 py-2 text-lg text-black font-bold mr-2 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300 duration-150 ease-in-out z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 mr-2">
-                            <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
-                        </svg>
-                        Watch Now
-                    </button> */}
                     <Modal
                         labelModal={true}
                         id={movies?.id}
