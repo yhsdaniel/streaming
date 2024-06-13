@@ -21,8 +21,7 @@ export default function Modal(props) {
                 <button
                     type="button"
                     onClick={openModal}
-                    className="bg-gray-600 px-6 py-2 text-base text-white font-bold flex justify-center items-center rounded-3xl cursor-pointer hover:bg-gray-500 duration-150 ease-in-out z-10"
-                >
+                    className="bg-gray-600 px-6 py-2 text-base text-white font-bold flex justify-center items-center rounded-3xl cursor-pointer hover:bg-gray-500 duration-150 ease-in-out z-10 max-[600px]:px-4    ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 mr-2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                     </svg>
@@ -35,8 +34,7 @@ export default function Modal(props) {
                     alt='Image'
                     src={props.image}
                     effect="blur"
-                    loading='lazy'
-                    fetchPriority='high'
+                    loading='eager'
                     onClick={openModal}
                 />
             }

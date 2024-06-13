@@ -54,9 +54,9 @@ export default function Main() {
                     <h1 className="text-[4rem] my-6 max-[1024px]:text-3xl">{movies?.original_title || movies?.original_name}</h1>
                     <div className='flex justify-center items-start my-4 h-8'>
                         <h1 className="w-6/12 h-full text-xl max-[1024px]:text-xl"><span className="fa fa-star text-orange-300"></span> {movies?.vote_average.toFixed(1)} / 10</h1>
-                        <p className='flex-1 text-sm h-full'>Release date: {movies?.release_date}</p>
+                        <p className='flex-1 text-sm h-full'>Release date: {movies?.release_date || movies?.first_air_date}</p>
                     </div>
-                    <p className="line-clamp-2">{movies?.overview}</p>
+                    <p className="line-clamp-2 max-[600px]:text-base">{movies?.overview}</p>
                 </div>
                 <div className="flex mt-8">
                     <Modal
