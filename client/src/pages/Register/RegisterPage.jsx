@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { apiMovies } from "../../lib/appConfig"
 
 export default function RegisterPage() {
     const [movie, setMovie] = useState([])
@@ -15,7 +16,7 @@ export default function RegisterPage() {
     const navigate = useNavigate()
 
     const getRequestAllDay = async () => {
-        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+        await axios.get(apiMovies.requestAllDay).then(response => {
             setMovie(response.data)
             setLoading(false)
         })

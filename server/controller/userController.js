@@ -64,7 +64,7 @@ const userController = {
                                     maxAge: 1000 * 60 * 60 * 24,
                                     path: '/'
                                 })
-                                .send('Cookie Set')
+                                    .send('Cookie Set')
                             }
                         } else {
                             return res.status(400).send('Password invalid')
@@ -77,12 +77,12 @@ const userController = {
     async getLogin(req, res) {
         const token = req.cookies.accessToken
         if (!token) {
-            res.status(404).json({message: 'Token not found'})
+            res.status(404).json({ message: 'Token not found' })
         } else {
             try {
                 const verified = jwt.verify(token, 'secret')
-                if(!verified){
-                    res.status(404).json({message: 'User Not Found'})
+                if (!verified) {
+                    res.status(404).json({ message: 'User Not Found' })
                 } else {
                     return res.status(200).json({
                         name: verified.name,
@@ -91,14 +91,14 @@ const userController = {
                     })
                 }
             } catch (error) {
-                res.json({message: 'Token Invalid or Expired'})
+                res.json({ message: 'Token Invalid or Expired' })
             }
         }
     },
 
     async postLogout(req, res) {
         const cookiesToken = req.cookies['accessToken']
-        if(cookiesToken){
+        if (cookiesToken) {
             return res.clearCookie('accessToken', {
                 httpOnly: true,
                 secure: true,

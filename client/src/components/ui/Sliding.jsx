@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useContext } from 'react'
 import Modal from '../Modal';
+import { ListMovieContext } from '../ListMovies';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,29 +9,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function Sliding(props) {
-	const [movie, setMovie] = useState([])
-
-	const apiURL = async () => {
-		try {
-			// eslint-disable-next-line react/prop-types
-			await axios.get(props.requestsAPI).then(response => {
-				setMovie(response.data)
-			})
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	useEffect(() => {
-		apiURL();
-	}, [])
-
-	if (movie)
+	const listmovies = useContext(ListMovieContext)
+	if (listmovies)
 		return (
 			<Swiper
 				slidesPerView={8}
 				slidesPerGroup={1}
-				slideToClickedSlide={true}
 				loop={true}
 				spaceBetween={10}
 				navigation={true}
@@ -64,7 +47,7 @@ export default function Sliding(props) {
 				modules={[Navigation, HashNavigation]}
 				className='mySwiper'
 			>	
-				{movie?.map((val, index) => (
+				{listmovies?.map((val, index) => (
 					<SwiperSlide key={index} data-hash={index} className='relative cursor-pointer p-2 bg-gray-600 shadow-inner shadow-white max-[600px]:p-0 max-[600px]:shadow-none'>
 						<Modal 
 							labelModal={false}

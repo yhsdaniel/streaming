@@ -1,10 +1,10 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Homepage from './pages/Dashboard/page'
-import Loginpage from './pages/Login/page'
-import RegisterPage from './pages/Register/page'
-import MoviePage from './pages/Movies/page'
-import TVshowPage from './pages/TVshow/page'
+import Loginpage from './pages/Login/LoginPage'
+import RegisterPage from './pages/Register/RegisterPage'
+import MoviePage from './pages/Dashboard/Movies/MoviePage'
+import TVshowPage from './pages/Dashboard/TVshow/TvShowPage'
 
 function App() {
 

@@ -31,9 +31,9 @@ app.use(cors({
 app.use('/', router)
 
 connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
     console.log("MongoDB is  connected successfully")
     server.listen(port, () => {

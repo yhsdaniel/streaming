@@ -1,7 +1,6 @@
 import express from 'express'
 import { apiController } from '../controller/apiController.js'
 import { userController } from '../controller/userController.js'
-import { authUser } from '../middleware/authUser.js'
 import dotenv from 'dotenv'
 
 const router = express.Router()

@@ -1,17 +1,10 @@
 import Navbar from "../../components/Navbar";
 import Main from "./Main";
-import PopularMovies from "../Movies/PopularMovies";
-import TrendingTVSeries from "../TVshow/TrendingTVSeries";
-import TopRatedTVSeries from "../TVshow/TopRatedTVSeries";
 import { motion, AnimatePresence } from 'framer-motion'
+import ListMovies from "../../components/ListMovies";
+import { title, apiMovies, typeFilms } from '../../lib/appConfig'
 
 export default function Homepage() {
-  const title = {
-    trendingTVSeries: 'Top Trending TV Series',
-    topratedSeries: 'Top Rated TV Series',
-    popularMovies: 'Top Popular Movies',
-  }
-
   return (
     <AnimatePresence>
       <motion.div
@@ -23,9 +16,9 @@ export default function Homepage() {
         <Navbar />
         <Main />
         <div className="bg-black relative">
-          <PopularMovies title={title.popularMovies} />
-          <TrendingTVSeries title={title.trendingTVSeries} />
-          <TopRatedTVSeries title={title.topratedSeries} />
+          <ListMovies title={title.popularMovies} slidingMovie={apiMovies.popularMovies} typesOfFilms={typeFilms.movie}/>
+          <ListMovies title={title.trendingTVSeries} slidingMovie={apiMovies.trendingTVSeries} typesOfFilms={typeFilms.tv}/>
+          <ListMovies title={title.topratedTVSeries} slidingMovie={apiMovies.topratedTVSeries} typesOfFilms={typeFilms.tv}/>
         </div>
       </motion.div>
     </AnimatePresence>

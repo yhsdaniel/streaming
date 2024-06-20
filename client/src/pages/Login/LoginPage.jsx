@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { apiMovies } from "../../lib/appConfig"
 
 export default function Loginpage() {
 	const [movie, setMovie] = useState([])
@@ -15,7 +16,7 @@ export default function Loginpage() {
 
 	const getRequestAllDay = async () => {
 		setLoading(true)
-		await axios.get(`${import.meta.env.VITE_BACKEND_URL}/requestAllDay`).then(response => {
+		await axios.get(apiMovies.requestAllDay).then(response => {
 			setMovie(response.data[0])
 			if (response.data) {
 				setLoading(false)
@@ -92,7 +93,6 @@ export default function Loginpage() {
 							className="min-h-full min-w-full object-cover"
 							effect="blur"
 							loading="lazy"
-							fetchPriority="high"
 						/>
 					</div>
 					<div className="h-full w-full flex justify-center items-center rounded-md">
@@ -105,7 +105,6 @@ export default function Loginpage() {
 										className='min-w-full min-h-full object-cover'
 										effect="blur"
 										loading="lazy"
-										fetchPriority="high"
 										width={311}
 										height={467}
 									/>
