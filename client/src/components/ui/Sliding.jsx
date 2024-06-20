@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 export default function Sliding(props) {
 	const listmovies = useContext(ListMovieContext)
-	if (listmovies)
+	{listmovies.length > 0
 		return (
 			<Swiper
 				slidesPerView={8}
@@ -18,6 +18,10 @@ export default function Sliding(props) {
 				loop={true}
 				spaceBetween={10}
 				navigation={true}
+				centeredSlides={true}
+				pagination={false}
+				modules={[Navigation, HashNavigation]}
+				className='mySwiper'
 				breakpoints={{
 					1440: {
 						slidesPerView: 7,
@@ -44,11 +48,9 @@ export default function Sliding(props) {
 						spaceBetween: 5
 					},
 				}}
-				modules={[Navigation, HashNavigation]}
-				className='mySwiper'
 			>	
 				{listmovies?.map((val, index) => (
-					<SwiperSlide key={index} data-hash={index} className='relative cursor-pointer p-2 bg-gray-600 shadow-inner shadow-white max-[600px]:p-0 max-[600px]:shadow-none'>
+					<SwiperSlide key={index} className='relative cursor-pointer p-2 bg-gray-600 shadow-inner shadow-white max-[600px]:p-0 max-[600px]:shadow-none'>
 						<Modal 
 							labelModal={false}
 							id={val?.id} 
@@ -64,4 +66,5 @@ export default function Sliding(props) {
 				))}
 			</Swiper>
 		)
+	}
 }

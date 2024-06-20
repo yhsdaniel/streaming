@@ -28,15 +28,16 @@ export default function Modal(props) {
                     Trailer
                 </button>
                 :
-                <LazyLoadImage
-                    key={props.id}
-                    className='w-full h-full'
-                    alt='Image'
-                    src={props.image}
-                    effect="blur"
-                    loading='eager'
-                    onClick={openModal}
-                />
+                // <LazyLoadImage
+                //     key={props.id}
+                //     className='w-full h-full'
+                //     alt='Image'
+                //     src={props.image}
+                //     effect="blur"
+                //     loading='eager'
+                //     onClick={openModal}
+                // />
+                <img key={props.id} src={props.image} alt="Image" onClick={openModal} loading='lazy' className='w-full h-full' />
             }
 
             <Transition appear show={isOpen} as={Fragment}>
