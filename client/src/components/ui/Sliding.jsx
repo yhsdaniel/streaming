@@ -10,7 +10,8 @@ import 'swiper/css/navigation';
 
 export default function Sliding(props) {
 	const listmovies = useContext(ListMovieContext)
-	{listmovies.length > 0
+	{
+		listmovies.length > 0
 		return (
 			<Swiper
 				slidesPerView={8}
@@ -48,14 +49,14 @@ export default function Sliding(props) {
 						spaceBetween: 5
 					},
 				}}
-			>	
+			>
 				{listmovies?.map((val, index) => (
 					<SwiperSlide key={index} className='relative cursor-pointer p-2 bg-gray-600 shadow-inner shadow-white max-[600px]:p-0 max-[600px]:shadow-none'>
-						<Modal 
+						<Modal
 							labelModal={false}
-							id={val?.id} 
+							id={val?.id}
 							typesFilm={props.types}
-							title={val?.title} 
+							title={val?.title}
 							overview={val?.overview}
 							date={val?.release_date}
 							image={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}

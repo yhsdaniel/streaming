@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
@@ -14,7 +14,7 @@ export default function Loginpage() {
 
 	const navigate = useNavigate()
 
-	const getRequestAllDay = async () => {
+	const getRequestAllDay = useCallback(async () => {
 		setLoading(true)
 		await axios.get(apiMovies.requestAllDay).then(response => {
 			setMovie(response.data[0])
@@ -22,7 +22,7 @@ export default function Loginpage() {
 				setLoading(false)
 			}
 		})
-	}
+	}, [apiMovies.requestAllDay])
 	const getUser = async () => {
 		try {
 			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
@@ -15,28 +15,28 @@ export default function RegisterPage() {
 
     const navigate = useNavigate()
 
-    const getRequestAllDay = async () => {
+    const getRequestAllDay = useCallback(async () => {
         await axios.get(apiMovies.requestAllDay).then(response => {
             setMovie(response.data)
             setLoading(false)
         })
-    }
+    }, [apiMovies.requestAllDay])
 
     const getUser = async () => {
-		try {
-			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-				withCredentials: true,
-			}).then((response) => {
-				if(response.data){
-					navigate('/dashboard')
-				}
-			})
-		} catch (error) {
-			if (error) {
-				navigate('/register')
-			}
-		}
-	}
+        try {
+            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+                withCredentials: true,
+            }).then((response) => {
+                if (response.data) {
+                    navigate('/dashboard')
+                }
+            })
+        } catch (error) {
+            if (error) {
+                navigate('/register')
+            }
+        }
+    }
 
     useEffect(() => {
         Promise.all([
@@ -82,14 +82,14 @@ export default function RegisterPage() {
                         <h1 className='text-orange-500 text-4xl cursor-default font-bold w-2/12'>NETEX</h1>
                     </header>
                     <div className="absolute -z-10 bg-black opacity-35 bg-cover block min-h-full h-full overflow-hidden">
-						<LazyLoadImage 
-                            src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`} 
-                            alt='Image Sample' 
+                        <LazyLoadImage
+                            src={`https://image.tmdb.org/t/p/original/${movie[0]?.backdrop_path}`}
+                            alt='Image Sample'
                             className="min-h-full min-w-full object-cover"
                             effect="blur"
                             loading="lazy"
                         />
-					</div>
+                    </div>
                     <div className="h-full w-full flex justify-center items-center rounded-md">
                         {loading ? <span className="loader"></span> :
                             <section className="bg-black/60 my-auto mx-[25%] max-[1200px]:mx-[15%] max-[900px]:mx-[10%] max-[700px]:flex-col max-[700px]:w-full rounded-lg flex justify-center items-center">
