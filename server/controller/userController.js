@@ -103,6 +103,7 @@ const userController = {
                 secure: true,
                 sameSite: 'none',
                 expires: new Date(0),
+                maxAge: 0,
                 path: '/'
             }).status(200).json({ message: 'Cookies Removed' })
         }
