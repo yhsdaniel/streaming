@@ -100,7 +100,6 @@ const userController = {
         const cookiesToken = req.cookies['accessToken']
         if (cookiesToken) {
             return res.clearCookie('accessToken', {
-                httpOnly: true,
                 secure: true,
                 sameSite: 'none',
                 expires: new Date(0),
