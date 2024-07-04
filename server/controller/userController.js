@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import User from '../lib/User.js'
+import cookieParser from 'cookie-parser'
 
 const userController = {
     async postRegister(req, res) {
@@ -99,13 +100,15 @@ const userController = {
     async postLogout(req, res) {
         const cookiesToken = req.cookies['accessToken']
         if (cookiesToken) {
-            return res.clearCookie('accessToken', {
-                secure: true,
-                sameSite: 'none',
-                expires: new Date(0),
-                maxAge: 0,
-                path: '/'
-            }).status(200).json({ message: 'Cookies Removed' })
+            // return res.clearCookie('accessToken', {
+            //     secure: true,
+            //     sameSite: 'none',
+            //     expires: new Date(0),
+            //     maxAge: 0,
+            //     path: '/'
+            // }).status(200).json({ message: 'Cookies Removed' })
+            res.cookie('accessToken', '', { expires: new Date('1970-01-01T00:00:00.000Z'), path: '/' });
+            return res.status(200).json({ message: 'Cookies Removed' })
         }
     }
 }
