@@ -107,7 +107,7 @@ const userController = {
             //     maxAge: 0,
             //     path: '/'
             // }).status(200).json({ message: 'Cookies Removed' })
-            res.cookie('accessToken', '', { expires: new Date('1970-01-01T00:00:00.000Z'), path: '/' });
+            res.set('Set-Cookie', 'accessToken=; expires=Thu, 01-01-1970 00:00:00 GMT; path=/');
             return res.status(200).json({ message: 'Cookies Removed' })
         }
     }
