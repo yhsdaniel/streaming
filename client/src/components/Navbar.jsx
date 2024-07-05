@@ -49,9 +49,9 @@ export default function Navbar() {
                 <Link to='/dashboard' className='text-orange-500 text-4xl font-bold cursor-pointer'>NETEX</Link>
             </div>
             <div className="flex justify-start items-center gap-4 w-7/12">
-                <Link to='/dashboard' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out">Home</Link>
-                <Link to='/tvshows' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out">TV Shows</Link>
-                <Link to='/movies' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out">Movies</Link>
+                <Link to='/dashboard' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out max-[600px]:text-sm">Home</Link>
+                <Link to='/tvshows' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out max-[600px]:text-sm">TV Shows</Link>
+                <Link to='/movies' className="text-gray-100 hover:text-gray-300 duration-200 ease-in-out max-[600px]:text-sm">Movies</Link>
             </div>
             <div className="flex justify-end items-center w-3/12 text-white">
                 <Dropdown jwtdecodedName={name} handleClick={handleLogout} />
