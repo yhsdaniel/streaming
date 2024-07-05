@@ -98,18 +98,14 @@ const userController = {
     },
 
     async postLogout(req, res) {
-        const cookiesToken = req.cookies['accessToken']
-        if (cookiesToken) {
-            // return res.clearCookie('accessToken', {
-            //     secure: true,
-            //     sameSite: 'none',
-            //     expires: new Date(0),
-            //     maxAge: 0,
-            //     path: '/'
-            // }).status(200).json({ message: 'Cookies Removed' })
-            res.set('Set-Cookie', 'accessToken=; expires=Thu, 01-01-1970 00:00:00 GMT; path=/');
-            return res.status(200).json({ message: 'Cookies Removed' })
-        }
+        res.clearCookie('accessToken', {
+            // secure: true,
+            // sameSite: 'none',
+            expires: new Date(0),
+            maxAge: 0,
+            path: '/'
+        })
+        return res.status(200).json({ message: 'Cookies Removed' })
     }
 }
 

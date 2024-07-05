@@ -15,7 +15,7 @@ export default function Navbar() {
                 'Content-Type': 'application/json',
             }
         }).then(response => {
-            if(response.data){
+            if (response.data) {
                 setName(response.data.name)
             } else {
                 navigate('/')
@@ -32,7 +32,7 @@ export default function Navbar() {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
                 withCredentials: true
             }).then((response) => {
-                if(response.status == 200){
+                if (response.status == 200) {
                     navigate('/')
                 }
             })

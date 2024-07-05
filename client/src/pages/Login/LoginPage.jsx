@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { apiMovies } from "../../lib/appConfig"
 
 export default function Loginpage() {
-	const [movie, setMovie] = useState([])
+	const [movie, setMovie] = useState(null)
 	const [email, setEmail] = useState('')
 	const [pass, setPass] = useState('')
 	const [loading, setLoading] = useState(true)
@@ -18,9 +18,7 @@ export default function Loginpage() {
 		setLoading(true)
 		await axios.get(apiMovies.requestAllDay).then(response => {
 			setMovie(response.data[0])
-			if (response.data) {
-				setLoading(false)
-			}
+			setLoading(false)
 		})
 	}, [apiMovies.requestAllDay])
 	const getUser = async () => {
