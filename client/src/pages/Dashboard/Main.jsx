@@ -65,7 +65,7 @@ export default function Main() {
                         title={movies?.title}
                         overview={movies?.overview}
                         date={movies?.release_date}
-                        image={`https://image.tmdb.org/t/p/original/${movies?.poster_path}`}
+                        image={`https://image.tmdb.org/t/p/w200/${movies?.poster_path}`}
                         runtime={movies?.runtime}
                         typesFilm={'movie'}
                     />
