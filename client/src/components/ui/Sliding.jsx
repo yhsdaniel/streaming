@@ -45,7 +45,7 @@ export default function Sliding(props) {
 						spaceBetween: 5
 					},
 					320: {
-						slidesPerView: 4,
+						slidesPerView: 3,
 						spaceBetween: 5
 					},
 				}}
