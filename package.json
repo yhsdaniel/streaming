@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.14"
+  },
+  "dependencies": {
+    "mongoose": "^8.5.0"
   }
 }
