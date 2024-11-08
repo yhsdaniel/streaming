@@ -30,10 +30,11 @@ export default function Modal(props) {
                 :
                 <LazyLoadImage
                     key={props.id}
-                    className='w-full h-full'
                     alt='Image'
                     src={props.image}
-                    effect="blur"
+                    className='size-full'
+                    width='200'
+                    height='300'
                     loading='lazy'
                     onClick={openModal}
                 />

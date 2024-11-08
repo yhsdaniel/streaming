@@ -51,7 +51,7 @@ export default function Sliding(props) {
 				}}
 			>
 				{listmovies?.map((val, index) => (
-					<SwiperSlide key={index} className='relative cursor-pointer p-2 bg-gray-600 shadow-inner shadow-white max-[600px]:p-0 max-[600px]:shadow-none'>
+					<SwiperSlide key={index} className='relative cursor-pointer p-1 shadow-inner shadow-white max-[600px]:p-0 max-[600px]:shadow-none'>
 						<Modal
 							labelModal={false}
 							id={val?.id}
@@ -59,7 +59,7 @@ export default function Sliding(props) {
 							title={val?.title}
 							overview={val?.overview}
 							date={val?.release_date}
-							image={`https://image.tmdb.org/t/p/original/${val?.poster_path}`}
+							image={`https://image.tmdb.org/t/p/w200/${val?.poster_path}`}
 							runtime={val?.runtime}
 							rating={val?.vote_average.toFixed(1)}
 						/>
