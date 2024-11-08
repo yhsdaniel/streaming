@@ -41,7 +41,7 @@ export default function RegisterPage() {
     useEffect(() => {
         Promise.all([
             getRequestAllDay(),
-            getUser()
+            // getUser()
         ])
     }, [])
 

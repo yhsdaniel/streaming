@@ -23,9 +23,9 @@ export default function Navbar() {
         })
     }
 
-    useEffect(() => {
-        getUser();
-    }, [])
+    // useEffect(() => {
+    //     getUser();
+    // }, [])
 
     const handleLogout = async () => {
         try {

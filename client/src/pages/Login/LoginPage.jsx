@@ -39,7 +39,7 @@ export default function Loginpage() {
 
 	useEffect(() => {
 		Promise.all([
-			getUser(),
+			// getUser(),
 			getRequestAllDay()
 		])
 	}, [])
