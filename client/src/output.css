@@ -796,6 +796,10 @@ video {
   width: 80%;
 }
 
+.w-\[90\%\] {
+  width: 90%;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1791,5 +1795,34 @@ input:focus-visible {
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-full {
+    height: 100%;
+  }
+
+  .md\:h-\[90\%\] {
+    height: 90%;
+  }
+
+  .md\:w-\[90\%\] {
+    width: 90%;
+  }
+
+  .md\:w-\[80\%\] {
+    width: 80%;
+  }
+
+  .md\:w-\[70\%\] {
+    width: 70%;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
