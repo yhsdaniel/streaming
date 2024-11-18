@@ -19,12 +19,22 @@ export default function VideoBanner(props) {
 
     return (
         <>
-            <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${trailer}?origin=http:localhost:5173`}
-                playing={true}
-                width={'100%'}
-                height={'90%'}
-            />
+            <div className='md:block hidden h-full'>
+                <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${trailer}?origin=http:localhost:5173`}
+                    playing={true}
+                    width={'100%'}
+                    height={'100%'}
+                />
+            </div>
+            <div className='md:hidden block h-3/6'>
+                <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${trailer}?origin=http:localhost:5173`}
+                    playing={true}
+                    width={'100%'}
+                    height={'100%'}
+                />
+            </div>
         </>
     )
 }
