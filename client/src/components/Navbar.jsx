@@ -43,7 +43,7 @@ export default function Navbar() {
     return (
         <header className='flex items-center justify-between py-4 px-11 max-[500px]:px-4 max-[1024px]:px-4 z-[20] fixed w-full bg-gradient-to-b from-gray-900 to-transparent'>
             <div className="min-[701px]:hidden max-[700px]:block w-2/12">
-                <Link to='/' className='text-orange-500 text-4xl font-bold cursor-pointer'>N</Link>
+                <Link preventScrollReset to='/' className='text-orange-500 text-4xl font-bold cursor-pointer'>N</Link>
             </div>
             <div className="min-[701px]:block max-[700px]:hidden w-2/12">
                 <Link to='/' className='text-orange-500 text-4xl font-bold cursor-pointer'>NETEX</Link>

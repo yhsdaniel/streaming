@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 export default function Main() {
     const [movie, setMovie] = useState('')
     const movies = movie[Math.floor(Math.random() * movie.length)]
-    const urlImage = `https://image.tmdb.org/t/p/w200/${movies?.backdrop_path}`
+    const urlImage = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`
     const navigate = useNavigate()
 
     const getPopularMovie = async () => {

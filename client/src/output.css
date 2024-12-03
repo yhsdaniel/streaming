@@ -1774,6 +1774,16 @@ input:focus-visible {
   }
 }
 
+@media (min-width: 640px) {
+  .sm\:w-3\/12 {
+    width: 25%;
+  }
+
+  .sm\:w-4\/12 {
+    width: 33.333333%;
+  }
+}
+
 @media (min-width: 701px) {
   .min-\[701px\]\:block {
     display: block;

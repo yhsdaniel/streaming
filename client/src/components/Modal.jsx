@@ -69,8 +69,8 @@ export default function Modal(props) {
                                     <div className='mt-4 bg-black w-full flex justify-center items-start flex-col max-[600px]:px-2'>
                                         <p className='text-2xl'>{props.title}</p>
                                         <div className='flex flex-col md:flex-row justify-start items-start my-4'>
-                                            <div className='w-3/12 mt-4'>
-                                                <img src={props.image} alt="Image Alt" className='w-full h-full' />
+                                            <div className='w-6/12 sm:w-4/12 mt-4'>
+                                                <img src={props.image} alt="Image Alt" className='size-full' />
                                             </div>
                                             <div className='flex-1 px-4 max-[600px]:w-full max-[600px]:px-0 max-[600px]:py-4'>
                                                 <p>{props.runtime}</p>
