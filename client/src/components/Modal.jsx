@@ -36,6 +36,7 @@ export default function Modal(props) {
                     width='200'
                     height='300'
                     loading='lazy'
+                    fetchPriority='high'
                     onClick={openModal}
                 />
                 // <img key={props.id} src={props.image} alt="Image" onClick={openModal} loading='lazy' className='w-full h-full' />
