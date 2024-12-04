@@ -21,21 +21,21 @@ export default function Loginpage() {
 			setLoading(false)
 		})
 	}, [apiMovies.requestAllDay])
-	const getUser = async () => {
-		try {
-			await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-				withCredentials: true,
-			}).then((response) => {
-				if (response.data) {
-					navigate('/dashboard')
-				}
-			})
-		} catch (error) {
-			if (error) {
-				navigate('/')
-			}
-		}
-	}
+	// const getUser = async () => {
+	// 	try {
+	// 		await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+	// 			withCredentials: true,
+	// 		}).then((response) => {
+	// 			if (response.data) {
+	// 				navigate('/dashboard')
+	// 			}
+	// 		})
+	// 	} catch (error) {
+	// 		if (error) {
+	// 			navigate('/')
+	// 		}
+	// 	}
+	// }
 
 	useEffect(() => {
 		Promise.all([

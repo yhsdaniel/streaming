@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
+import React from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import VideoBanner from './VideoBanner'
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
+const VideoBanner = React.lazy(() => import('./VideoBanner'))
 
 export default function Modal(props) {
     let [isOpen, setIsOpen] = useState(false)

@@ -1,8 +1,10 @@
 import './App.css'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Homepage from './pages/Dashboard/page'
-import MoviePage from './pages/Dashboard/Movies/MoviePage'
-import TVshowPage from './pages/Dashboard/TVshow/TvShowPage'
+
+const HomePage = React.lazy(() => import('./pages/Dashboard/page'))
+const MoviePage = React.lazy(() => import('./pages/Dashboard/Movies/MoviePage'))
+const TVshowPage = React.lazy(() => import('./pages/Dashboard/TVshow/TvShowPage'))
 
 function App() {
 
@@ -10,7 +12,7 @@ function App() {
 		<Routes>
 			{/* <Route path='/' exact element={<Loginpage />} />
 			<Route path='/register' element={<RegisterPage />} /> */}
-			<Route path='/' exact element={<Homepage />} />
+			<Route path='/' exact element={<HomePage />} />
 			<Route path='/movies' element={<MoviePage />} />
 			<Route path='/tvshows' element={<TVshowPage />} />
 		</Routes>

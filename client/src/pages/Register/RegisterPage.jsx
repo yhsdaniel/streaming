@@ -22,21 +22,21 @@ export default function RegisterPage() {
         })
     }, [apiMovies.requestAllDay])
 
-    const getUser = async () => {
-        try {
-            await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-                withCredentials: true,
-            }).then((response) => {
-                if (response.data) {
-                    navigate('/dashboard')
-                }
-            })
-        } catch (error) {
-            if (error) {
-                navigate('/register')
-            }
-        }
-    }
+    // const getUser = async () => {
+    //     try {
+    //         await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+    //             withCredentials: true,
+    //         }).then((response) => {
+    //             if (response.data) {
+    //                 navigate('/dashboard')
+    //             }
+    //         })
+    //     } catch (error) {
+    //         if (error) {
+    //             navigate('/register')
+    //         }
+    //     }
+    // }
 
     useEffect(() => {
         Promise.all([

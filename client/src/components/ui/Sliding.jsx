@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import Modal from '../Modal';
+import React, { useContext } from 'react'
 import { ListMovieContext } from '../ListMovies';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -7,6 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, HashNavigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
+const Modal = React.lazy(() => import('../Modal'))
 
 export default function Sliding(props) {
 	const listmovies = useContext(ListMovieContext)

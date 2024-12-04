@@ -1,7 +1,8 @@
-import Navbar from "../../components/Navbar";
-import Main from "./Main";
+import React from 'react'
 import { title, apiMovies, typeFilms } from '../../lib/appConfig'
 
+const Navbar = React.lazy(() => import('../../components/Navbar'))
+const Main = React.lazy(() => import('./Main'))
 const ListMovies = React.lazy(() => import('../../components/ListMovies'))
 
 export default function Homepage() {

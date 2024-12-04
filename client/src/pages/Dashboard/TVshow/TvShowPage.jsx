@@ -1,8 +1,10 @@
-import Navbar from "../../../components/Navbar";
-import Main from "../Main";
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import ListMovies from "../../../components/ListMovies";
 import { title, apiMovies, typeFilms } from '../../../lib/appConfig'
+
+const Navbar = React.lazy(() => import('../../../components/Navbar'))
+const Main = React.lazy(() => import('../Main'))
+const ListMovies = React.lazy(() => import('../../../components/ListMovies'))
 
 export default function TVshowPage() {
     return (
@@ -15,11 +17,11 @@ export default function TVshowPage() {
             >
                 <Navbar />
                 <Main />
-                <div>
+                <>
                     <ListMovies title={title.popularTVSeries} slidingMovie={apiMovies.popularTVSeries} typesOfFilms={typeFilms.tv} />
                     <ListMovies title={title.trendingTVSeries} slidingMovie={apiMovies.trendingTVSeries} typesOfFilms={typeFilms.tv} />
                     <ListMovies title={title.topratedTVSeries} slidingMovie={apiMovies.topratedTVSeries} typesOfFilms={typeFilms.tv} />
-                </div>
+                </>
             </motion.div>
         </AnimatePresence>
     )
