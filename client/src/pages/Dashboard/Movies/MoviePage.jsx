@@ -15,10 +15,10 @@ export default function MoviePage() {
             >
                 <Navbar />
                 <Main />
-                <div className="bg-black relative">
-                    <ListMovies title={title.popularMovies} slidingMovie={apiMovies.popularMovies} typesOfFilms={typeFilms.movie}/>
-                    <ListMovies title={title.topRatedMovies} slidingMovie={apiMovies.topRatedMovies} typesOfFilms={typeFilms.movie}/>
-                    <ListMovies title={title.UpcomingMovies} slidingMovie={apiMovies.UpcomingMovies} typesOfFilms={typeFilms.movie}/>
+                <div>
+                    <ListMovies title={title.popularMovies} slidingMovie={apiMovies.popularMovies} typesOfFilms={typeFilms.movie} />
+                    <ListMovies title={title.topRatedMovies} slidingMovie={apiMovies.topRatedMovies} typesOfFilms={typeFilms.movie} />
+                    <ListMovies title={title.UpcomingMovies} slidingMovie={apiMovies.UpcomingMovies} typesOfFilms={typeFilms.movie} />
                 </div>
             </motion.div>
         </AnimatePresence>

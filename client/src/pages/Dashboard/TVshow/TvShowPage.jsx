@@ -15,10 +15,10 @@ export default function TVshowPage() {
             >
                 <Navbar />
                 <Main />
-                <div className="bg-black relative">
-                    <ListMovies title={title.popularTVSeries} slidingMovie={apiMovies.popularTVSeries} typesOfFilms={typeFilms.tv}/>
-                    <ListMovies title={title.trendingTVSeries} slidingMovie={apiMovies.trendingTVSeries} typesOfFilms={typeFilms.tv}/>
-                    <ListMovies title={title.topratedTVSeries} slidingMovie={apiMovies.topratedTVSeries} typesOfFilms={typeFilms.tv}/>
+                <div>
+                    <ListMovies title={title.popularTVSeries} slidingMovie={apiMovies.popularTVSeries} typesOfFilms={typeFilms.tv} />
+                    <ListMovies title={title.trendingTVSeries} slidingMovie={apiMovies.trendingTVSeries} typesOfFilms={typeFilms.tv} />
+                    <ListMovies title={title.topratedTVSeries} slidingMovie={apiMovies.topratedTVSeries} typesOfFilms={typeFilms.tv} />
                 </div>
             </motion.div>
         </AnimatePresence>
