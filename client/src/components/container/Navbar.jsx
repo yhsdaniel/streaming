@@ -23,10 +23,6 @@ export default function Navbar() {
         })
     }
 
-    // useEffect(() => {
-    //     getUser();
-    // }, [])
-
     const handleLogout = async () => {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {

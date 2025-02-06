@@ -2,9 +2,9 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
 import { title, apiMovies, typeFilms } from '../../../lib/appConfig'
 
-const Navbar = React.lazy(() => import('../../../components/Navbar'))
+const Navbar = React.lazy(() => import('../../../components/container/Navbar'))
 const Main = React.lazy(() => import('../Main'))
-const ListMovies = React.lazy(() => import('../../../components/ListMovies'))
+const ListMovies = React.lazy(() => import('../../../components/container/ListMovies'))
 
 export default function TVshowPage() {
     return (

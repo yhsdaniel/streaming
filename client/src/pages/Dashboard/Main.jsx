@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
-const Modal = React.lazy(() => import('../../components/Modal'))
+const Modal = React.lazy(() => import('../../components/container/Modal'))
 
 export default function Main() {
     const [movie, setMovie] = useState('')

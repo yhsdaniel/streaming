@@ -9,7 +9,6 @@ import Footer from './components/container/Footer.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
-    <Footer />
     <Toaster
       position='top-center'
       toastOptions={{
