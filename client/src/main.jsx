@@ -4,13 +4,13 @@ import './output.css'
 import './App.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
-import Footer from './components/Footer.jsx'
+import Footer from './components/container/Footer.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
     <Footer />
-    <Toaster 
+    <Toaster
       position='top-center'
       toastOptions={{
         duration: 1500
