@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -16,6 +16,17 @@ export default function Modal(props) {
     function openModal() {
         setIsOpen(true)
     }
+
+    // Disable body scroll when modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";  // Prevent scrolling
+            document.body.style.touchAction = "none"; // Prevent overscroll bounce
+        } else {
+            document.body.style.overflow = "";
+            document.body.style.touchAction = "";
+        }
+    }, [isOpen]);
 
     return (
         <>
@@ -42,16 +53,16 @@ export default function Modal(props) {
                 />
                 // <img key={props.id} src={props.image} alt="Image" onClick={openModal} loading='lazy' className='w-full h-full' />
             }
-            <Transition appear show={isOpen} as={Fragment}>
+            <Transition show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-50" onClose={closeModal}>
                     <div className="fixed inset-0 overflow-y-auto flex justify-center items-center bg-gray-700/50">
-                        <div className="flex size-full md:w-[90%] md:h-[90%] items-center justify-center text-center">
+                        <div className="flex size-full dura md:w-[90%] md:h-[90%] items-center justify-center text-center">
                             <Transition.Child
                                 as={Fragment}
-                                enter="ease-out duration-500"
+                                enter="transform transition ease-in-out duration-500"
                                 enterFrom="translate-x-full" /* Start completely off-screen (to the right) */
                                 enterTo="translate-x-0"      /* End at its final position */
-                                leave="ease-in duration-300"
+                                leave="transform transition ease-in-out duration-500"
                                 leaveFrom="translate-x-0"    /* Start at its final position */
                                 leaveTo="translate-x-full"
                             >

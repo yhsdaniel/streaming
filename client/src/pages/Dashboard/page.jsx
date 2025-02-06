@@ -9,7 +9,6 @@ const Main = React.lazy(() => import('./Main'))
 const ListMovies = React.lazy(() => import('../../components/container/ListMovies'))
 
 export default function Homepage() {
-  const [isLoading, setIsLoading] = useState(false)
   const [movie, setMovie] = useState({
     popularMovies: [],
     trendingTVSeries: [],
