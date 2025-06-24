@@ -1,50 +1,49 @@
-import express, { json, urlencoded } from 'express'
+import express, { urlencoded, json } from 'express'
 import router from './routes/router.js'
 import cors from 'cors'
+import { createServer } from 'http'
 import cookieparser from 'cookie-parser'
 import { connect } from 'mongoose'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
+const {
+    MONGODB_URI
+} = process.env
+const port = process.env.PORT || 5000
+
 const app = express()
+const server = createServer(app);
 
-// ✅ CORS setup
-app.use(cors({
-    origin: ['https://netex.vercel.app', 'http://localhost:5173'], // tambahkan localhost jika perlu
-    credentials: true
+app.use(urlencoded({
+    extended: false
 }))
-
-// ✅ Preflight (untuk OPTIONS method dari browser)
-app.options('*', cors({
-    origin: ['https://netex.vercel.app'],
-    credentials: true
-}))
-
-// ✅ Middleware lainnya
-app.use(urlencoded({ extended: false }))
 app.use(json())
-app.use(cookieparser())
+app.use(cookieparser());
+// app.use(cors({
+//     origin: ['https://netex.vercel.app', 'http://localhost:5173']
+// }))
+app.use(cors({
+    origin: ['https://netex.vercel.app', 'http://localhost:5173'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+}))
 
-// ✅ Routing
 app.use('/', router)
 
-// ✅ MongoDB connect
-let isConnected = false
-async function connectDB() {
-    if (isConnected) return
-    await connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log("MongoDB is  connected successfully")
+        server.listen(port, () => {
+            console.log(`Server is listening on port ${port}`)
+        })
     })
-    isConnected = true
-    console.log("MongoDB connected")
-}
-
-// ✅ Export Express handler untuk Vercel
-const expressHandler = async (req, res) => {
-    await connectDB()
-    return app(req, res)
-}
-
-export default expressHandler
+    .catch((err) => {
+        console.error(err)
+        process.exit(1)
+    });
