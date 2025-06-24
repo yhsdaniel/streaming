@@ -49,9 +49,6 @@ connect(MONGODB_URI, {
 })
     .then(() => {
         console.log("MongoDB is  connected successfully")
-        server.listen(port, () => {
-            console.log(`Server is listening on port ${port}`)
-        })
     })
     .catch((err) => {
         console.error(err)
