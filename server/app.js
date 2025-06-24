@@ -41,3 +41,11 @@ connect(MONGODB_URI, {
         console.error(err)
         process.exit(1)
     });
+
+if (process.env.ENV_MODE === 'local') {
+    server.listen(port, () => {
+        console.log(`Server running at http://localhost:${port}`)
+    });
+}
+
+export default app
