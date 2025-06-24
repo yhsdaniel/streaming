@@ -14,7 +14,6 @@ export default function Homepage() {
     trendingTVSeries: [],
     topratedTVSeries: [],
   })
-  const [isLoading, setIsLoading] = useState(false)
 
   const apiURL = useCallback(async () => {
     try {
@@ -29,20 +28,18 @@ export default function Homepage() {
         trendingTVSeries: trendinRes.data,
         topratedTVSeries: topRatedRes.data,
       })
-      setIsLoading(false)
     } catch (error) {
       console.log(error)
     }
   }, [])
 
   useEffect(() => {
-    setIsLoading(true)
     apiURL();
   }, [])
 
   return (
     <>
-      {isLoading ? <Loading /> :
+      <React.Suspense fallback={<Loading />}>
         <>
           <Navbar />
           <Main />
@@ -51,9 +48,9 @@ export default function Homepage() {
             <ListMovies title={title.trendingTVSeries} movie={movie.trendingTVSeries} typesOfFilms={typeFilms.tv} />
             <ListMovies title={title.topratedTVSeries} movie={movie.topratedTVSeries} typesOfFilms={typeFilms.tv} />
           </>
-          <Footer />
         </>
-      }
+        <Footer />
+      </React.Suspense>
     </>
   )
 }
